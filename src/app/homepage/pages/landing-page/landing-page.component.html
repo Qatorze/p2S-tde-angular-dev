@@ -4,5 +4,24 @@
   >
     <h2>P2S-TDE, vous avez les clés!</h2>
   </div>
-  <div class="section-two"></div>
+  <div class="section-two">
+    <div>
+      <button
+        *ngFor="let button of buttons; let i = index"
+        [class.active]="activeIndex === i"
+        (click)="onButtonClick(i)"
+      >
+        {{ i + 1 }}
+      </button>
+    </div>
+    <div *ngFor="let section of sections; let i = index">
+      <div
+        *ngIf="activeIndex === i"
+        class="section-content"
+        appClickOutside="onOutsideClick(i)"
+      >
+        {{ section }}
+      </div>
+    </div>
+  </div>
 </div>

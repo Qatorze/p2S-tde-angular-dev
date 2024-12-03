@@ -24,7 +24,7 @@
           <li>Services...</li>
         </a>
         <li>
-          <a>
+          <a (click)="toggleModal()">
             <fa-icon [icon]="faSearch"></fa-icon>
           </a>
         </li>
@@ -44,4 +44,12 @@
   </div>
 </nav>
 
-<!-- Icona Cuore -->
+<!-- Modal -->
+<div
+  class="modal-container"
+  *ngIf="showModal"
+  appClickOutside
+  (clickOutside)="closeModal()"
+>
+  <p>Ceci est le contenu du modal.</p>
+</div>

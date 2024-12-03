@@ -13,4 +13,14 @@ export class HeaderComponent {
   faSignInAlt = faSignInAlt;
   faHeart = faHeart;
   faSearch = faSearch;
+
+  showModal = false;
+
+  toggleModal(): void {
+    this.showModal = !this.showModal;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+  }
 }

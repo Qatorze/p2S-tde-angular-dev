@@ -42,3 +42,23 @@
     }
   }
 }
+
+// Style du modal
+.modal-container {
+  position: absolute;
+  top: 70px; /* Ajustez selon votre design */
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 1000;
+  width: 300px;
+}
+
+.modal-container p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
