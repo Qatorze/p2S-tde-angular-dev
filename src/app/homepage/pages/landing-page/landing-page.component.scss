@@ -1,0 +1,13 @@
+.landind-container {
+  margin-top: 70px;
+  height: 200vh;
+  .section-one {
+    height: 350px;
+    background-color: var(--silver);
+    margin: 0;
+    h2 {
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+  }
+}

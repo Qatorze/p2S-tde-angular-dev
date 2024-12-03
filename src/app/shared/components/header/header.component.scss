@@ -1,0 +1,44 @@
+.navbar {
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  .navbar-container {
+    height: 70px;
+    padding: 0 50px;
+    .navbar-logo {
+      width: 60px;
+      height: 60px;
+      img {
+        border-radius: 11px;
+      }
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      li {
+        font-weight: 600;
+      }
+    }
+    button {
+      color: var(--text-regular);
+      font-weight: 700;
+      font-size: 11px;
+      margin: 0 0 0 30px;
+      padding: 6px 6px;
+      background-color: white;
+      border: 2px solid var(--text-regular);
+      &:hover {
+        background-color: var(--light-gray);
+      }
+      transition: background-color 0.3s ease-in-out;
+    }
+    button span {
+      font-size: 13px;
+      padding-right: 5px;
+    }
+  }
+}

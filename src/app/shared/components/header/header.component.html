@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div
+    class="navbar-container flex-fill d-flex flex-justify-content-between flex-align-items-center"
+  >
+    <ul class="header-links">
+      <li>Acheter</li>
+      <li>Louer</li>
+      <li>Vendre</li>
+      <li>Construire</li>
+    </ul>
+    <!-- Logo centré -->
+    <a class="navbar-logo">
+      <img
+        ngSrc="assets/logo2.jpg"
+        alt="Logo p2S-tde"
+        width="60"
+        height="60"
+        priority
+      />
+    </a>
+    <div class="d-flex flex-justify-content-between flex-align-items-between">
+      <ul>
+        <a>
+          <li>Services...</li>
+        </a>
+        <li>
+          <a>
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/favorites']" routerLinkActive="active">
+            <fa-icon [icon]="faHeart"></fa-icon>
+          </a>
+        </li>
+      </ul>
+      <button>
+        <a [routerLink]="['/auth/login']" routerLinkActive="active">
+          <span>Connexion</span>
+          <fa-icon [icon]="faSignInAlt" [size]="'1x'"></fa-icon>
+        </a>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Icona Cuore -->

@@ -1,0 +1,41 @@
+// Ici c'est pour les variables globales (font, couleurs, ecc.)
+
+// Font-family
+$font-poppins: "Poppins", sans-serif;
+$font-inter: "Inter", sans-serif;
+
+// Font weights
+$weight-light: 300;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-bold: 700;
+
+// Breakpoints
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+
+// Primary Colors
+$black: #000000;
+$pure-white: #ffffff;
+$primary-red: #e62f23; // example primary red
+
+// Secondary Colors
+$gray-light: #f7f7f7;
+$gray-dark: #c5c5c5;
+$red-light: #ff7477;
+$red-dark: #800000; // example darker red
+
+/* Neutri */
+$lightGray: #ddd;
+$text-regular: #333; /* Testo regolare */
+/* Aggiunto un bianco sporco per sfondi */
+$background-light: #efefef;
+/* Aggiunto un grigio scuro per contrasto */
+$dark-gray: #4b4b4b;
+
+// Utility Colors
+$border-color: #d3d3d3;
+$background-color: #222222;

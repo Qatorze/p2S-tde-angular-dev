@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-regular);
+  font-family: "Inter", sans-serif; /* Imposta il font Inter per tutti gli elementi */
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; //Pour pas avoir la couleur par default et donc hériter de la couleur du parent
+  cursor: pointer;
+}
+
+/*Definition de variables*/
+:root {
+  --primary: #d02b29; /* Colore principale (rosso acceso) */
+  --secondary: #f44336; /* Colore secondario (rosso brillante) */
+  --accent-color: #9e1b1b; /* Colore di accento (rosso scuro) */
+  --background-light: #f8f8f8; /* Colore di sfondo (grigio chiaro) */
+  --text-regular: #333333; /* Colore del testo (grigio scuro) */
+  --link-color: #d02b29; /* Colore dei link (rosso acceso) */
+  --hover-color: #f44336; /* Colore hover per pulsanti e link */
+  /* Neutri */
+  --lightGray: #ddd; /* Grigio chiaro */
+  --background-light: #efefef; /* Bianco sporco per lo sfondo */
+  --dark-gray: #4b4b4b; /* Grigio scuro per il contrasto */
+  --black: #171717;
+  /* Grigi più chiari */
+  --charcoal-gray: #333333; /* Grigio antracite, scuro ma non troppo */
+  --slate-gray: #708090; /* Grigio ardesia, più chiaro e bluastro */
+  --gray: #636262; /* Grigio medio, una tonalità neutra classica */
+  --light-gray: #d3d3d3; /* Grigio chiaro */
+  --gainsboro: #dcdcdc; /* Grigio chiaro, molto morbido e luminoso */
+  --silver: #727171; /* Argento, una tonalità di grigio metallico */
+  --whisper-gray: #f5f5f5; /* Grigio sussurrato, molto chiaro, quasi bianco */
+  --ghost-gray: #e0e0e0; /* Grigio fantasma, molto chiaro e freddo */
+  /* Sfumature di bianco */
+  --white: #ffffff; /* Bianco puro */
+  --off-white: #f1f1f1; /* Bianco caldo e morbido */
+  --cream: #f7f7f7; /* Bianco crema */
+  --ivory: #fafafa; /* Bianco avorio */
+  --ghost-white: #f8f8ff; /* Bianco fantasma (bluastro molto chiaro) */
+  --linen: #faf0e6; /* Bianco lino (tono caldo) */
+}
+
+body {
+  // padding: 0 100px;
+  min-height: 100vh;
+  background-color: var(--background-light);
+  color: var(--text-regular); /* Testo principale */
+  font-family: "Poppins", sans-serif; /* Imposta Poppins come font principale per il corpo */
+}
+
+// Layout
+
+.module-container {
+  // background-color: var(--primary); /* Sfondo nero per il contenitore */
+  min-height: 100vh;
+  /* Testo bianco */
+}
+
+.page-container {
+  background-color: var(--accent-blue);
+  border-radius: 10px;
+  margin: 0 40px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-justify-content-center {
+  justify-content: center;
+}
+
+.flex-justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-align-items-center {
+  align-items: center;
+}
+
+.flex-align-items-between {
+  align-items: space-between;
+}
+
+.flex-fill {
+  flex: 1 1 auto; // Pour que l'élément prenne tout l'espace disponible
+}
+
+.flex-30 {
+  flex: 1 1 30%;
+}
+
+.flex-40 {
+  flex: 1 1 40%;
+}
+
+.flex-50 {
+  flex: 1 1 50%;
+}
+
+.flex-60 {
+  flex: 1 1 60%;
+}
+
+.flex-70 {
+  flex: 1 1 70%;
+}
+
+//Utils
+
+.w-50 {
+  width: 50%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.p-5 {
+  padding: 5px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-15 {
+  padding: 15px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.p-25 {
+  padding: 25px;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-15 {
+  margin: 15px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.m-25 {
+  margin: 25px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-25 {
+  margin-bottom: 25px;
+}
+
+// Components
+
+.formulaire {
+  width: 410px;
+  padding: 15px 25px;
+  color: white;
+  border: 1px solid var(--lightGray);
+  background-color: var(--dark-gray);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--accent-color); /* Colore di accento blu */
+  color: var(--secondary); /* Testo bianco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; /* Colore di hover più scuro */
+}
