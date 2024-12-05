@@ -6,10 +6,9 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomepageComponent } from './homepage.component';
-import { ClickOutsideDirectiveDirective } from './directives/click-outside-directive.directive';
 
 @NgModule({
-  declarations: [HomepageComponent, OverviewComponent, LandingPageComponent, ClickOutsideDirectiveDirective],
+  declarations: [HomepageComponent, OverviewComponent, LandingPageComponent],
   imports: [CommonModule, HomepageRoutingModule, SharedModule],
 })
 export class HomepageModule {}

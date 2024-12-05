@@ -5,18 +5,34 @@ import { HeaderComponent } from './components/header/header.component';
 import { InternalNotFoundPageComponent } from './components/internal-not-found-page/internal-not-found-page.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ClickOutsideModalDirective } from './directives/click-outside-modal.directive';
+import { ToggleSearchSectionDirective } from './directives/toggle-search-section.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     InternalNotFoundPageComponent,
-    ClickOutsideDirective,
-    ClickOutsideDirective,
+    SearchBarComponent,
+    ClickOutsideModalDirective,
+    ToggleSearchSectionDirective,
   ],
-  imports: [CommonModule, NgOptimizedImage, RouterModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    RouterModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   // Exporte les composants pour les rendre disponibles dans les autres modules qui en aurons besoins
-  exports: [HeaderComponent, FooterComponent, InternalNotFoundPageComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    InternalNotFoundPageComponent,
+    SearchBarComponent,
+  ],
 })
 export class SharedModule {}

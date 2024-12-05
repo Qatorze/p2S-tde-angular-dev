@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appClickOutsideDirective]',
+  selector: '[appToggleSearchSection]',
   standalone: false,
 })
-export class ClickOutsideDirectiveDirective {
+export class ToggleSearchSectionDirective {
   @Input() sectionIndex: number | null = null; // Aggiungi un input per l'indice della sezione
   @Output() clickOutside = new EventEmitter<number>();
 

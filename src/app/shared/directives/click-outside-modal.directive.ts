@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appClickOutside]',
+  selector: '[appClickOutsideModal]',
   standalone: false,
 })
-export class ClickOutsideDirective {
+export class ClickOutsideModalDirective {
   // Événement qui sera déclenché lorsque l'utilisateur clique à l'extérieur
   @Output() clickOutside = new EventEmitter<void>();
 
@@ -24,5 +24,3 @@ export class ClickOutsideDirective {
     }
   }
 }
-
-// Cette directive écoute les clics sur tout le document et vérifie si le clic a eu lieu en dehors de l'élément auquel elle est appliquée.

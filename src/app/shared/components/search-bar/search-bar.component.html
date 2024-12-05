@@ -1,0 +1,89 @@
+<div class="tabs-container">
+  <!-- Schede di navigazione -->
+  <div class="tabs">
+    <button
+      *ngFor="let tab of tabs; let i = index"
+      [class.active]="activeTab === i"
+      (click)="setActiveTab(i)"
+    >
+      {{ tab.label }}
+    </button>
+  </div>
+
+  <!-- Contenuto dinamico per ogni scheda -->
+  <div class="tab-content">
+    <!-- Form per la scheda "Acheter" -->
+    <form *ngIf="activeTab === 0" (ngSubmit)="onSubmit('Acheter')">
+      <div class="form-group">
+        <h3>Acheter</h3>
+        <label for="location-acheter">Localisation</label>
+        <input
+          id="location-acheter"
+          type="text"
+          placeholder="Dans quelle ville ? Quartier ?"
+          [(ngModel)]="acheterForm.location"
+          name="location-acheter"
+        />
+      </div>
+      <button type="submit" class="btn-search">Rechercher</button>
+    </form>
+
+    <!-- Form per la scheda "Louer" -->
+    <form *ngIf="activeTab === 1" (ngSubmit)="onSubmit('Louer')">
+      <div class="form-group">
+        <h3>Louer</h3>
+        <label for="budget-louer">Votre Budget</label>
+        <input
+          id="budget-louer"
+          type="text"
+          placeholder="FCFA"
+          [(ngModel)]="louerForm.budget"
+          name="budget-louer"
+        />
+      </div>
+      <div class="checkbox-group">
+        <label *ngFor="let option of louerForm.options; let i = index">
+          <input
+            type="checkbox"
+            [(ngModel)]="option.checked"
+            name="option-louer-{{ i }}"
+          />
+          {{ option.label }}
+        </label>
+      </div>
+      <button type="submit" class="btn-search">Rechercher</button>
+    </form>
+
+    <!-- Form per la scheda "Vendre" -->
+    <form *ngIf="activeTab === 2" (ngSubmit)="onSubmit('Vendre')">
+      <div class="form-group">
+        <h3>Vendre</h3>
+        <label for="property-type">Type de bien</label>
+        <input
+          id="property-type"
+          type="text"
+          placeholder="Maison, Appartement, etc."
+          [(ngModel)]="vendreForm.propertyType"
+          name="property-type"
+        />
+      </div>
+      <button type="submit" class="btn-search">Rechercher</button>
+    </form>
+
+    <!-- Form per la scheda "Construire" -->
+    <form *ngIf="activeTab === 3" (ngSubmit)="onSubmit('Construire')">
+      <div class="form-group">
+        <h3>Construire</h3>
+        <label for="budget-construire">Budget estimé</label>
+        <input
+          id="budget-construire"
+          type="text"
+          placeholder="FCFA"
+          [(ngModel)]="construireForm.budget"
+          name="budget-construire"
+        />
+      </div>
+      <button type="submit" class="btn-search">Rechercher</button>
+    </form>
+  </div>
+</div>

@@ -48,8 +48,10 @@
 <div
   class="modal-container"
   *ngIf="showModal"
-  appClickOutside
+  appClickOutsideModal
   (clickOutside)="closeModal()"
 >
-  <p>Ceci est le contenu du modal.</p>
+  <div class="modal-content">
+    <app-search-bar></app-search-bar>
+  </div>
 </div>

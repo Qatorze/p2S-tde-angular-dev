@@ -4,6 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
   .navbar-container {
     height: 70px;
     padding: 0 50px;
@@ -29,7 +30,7 @@
       font-size: 11px;
       margin: 0 0 0 30px;
       padding: 6px 6px;
-      background-color: white;
+      background-color: var(--white);
       border: 2px solid var(--text-regular);
       &:hover {
         background-color: var(--light-gray);
@@ -45,20 +46,20 @@
 
 // Style du modal
 .modal-container {
-  position: absolute;
-  top: 70px; /* Ajustez selon votre design */
-  right: 20px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  position: fixed;
+  top: 0px;
+  background-color: var(--silver);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  z-index: 1000;
-  width: 300px;
-}
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.modal-container p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
+  .modal-content {
+    margin-top: 50px;
+    width: 100vw;
+  }
 }

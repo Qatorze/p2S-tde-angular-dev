@@ -7,18 +7,11 @@
     margin: 0;
     h2 {
       color: var(--white);
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
   }
-}
-
-button.active {
-  background-color: #007bff;
-  color: white;
-  outline: none;
-}
-.section-content {
-  padding: 20px;
-  border: 1px solid #ddd;
-  margin-top: 10px;
+  .section-two {
+    height: 350px;
+    transform: translateY(-120px);
+  }
 }
