@@ -3,13 +3,18 @@
     class="navbar-container flex-fill d-flex flex-justify-content-between flex-align-items-center"
   >
     <ul class="header-links">
-      <li>Acheter</li>
-      <li>Louer</li>
-      <li>Vendre</li>
-      <li>Construire</li>
+      <li>
+        <a [routerLink]="['/homepage']">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/homepage/nos-logements']">Nos Logements...</a>
+      </li>
+      <li>
+        <a [routerLink]="['/homepage/nos-services']">Nos Services...</a>
+      </li>
     </ul>
     <!-- Logo centré -->
-    <a class="navbar-logo">
+    <a [routerLink]="['/homepage']" class="navbar-logo">
       <img
         ngSrc="assets/logo2.jpg"
         alt="Logo p2S-tde"
@@ -20,8 +25,8 @@
     </a>
     <div class="d-flex flex-justify-content-between flex-align-items-between">
       <ul>
-        <a>
-          <li>Services...</li>
+        <a [routerLink]="['/homepage/about-us-P2S-tde']">
+          <li>About us...</li>
         </a>
         <li>
           <a (click)="toggleModal()">
@@ -29,7 +34,7 @@
           </a>
         </li>
         <li>
-          <a [routerLink]="['/favorites']" routerLinkActive="active">
+          <a routerLinkActive="active">
             <fa-icon [icon]="faHeart"></fa-icon>
           </a>
         </li>

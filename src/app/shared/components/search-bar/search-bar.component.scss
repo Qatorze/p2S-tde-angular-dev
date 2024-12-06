@@ -1,22 +1,23 @@
 .tabs-container {
+  transform: translateY(-120px);
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tab-content {
   background-color: var(--white);
-  border-radius: 0 0 3.5px 3.5px;
+  border-radius: 0 0 5px 5px;
 }
 
 .tabs {
   display: flex;
   border-bottom: 1px solid #ddd;
   background-color: var(--light-gray);
-  border-radius: 3.5px 3.5px 0 0;
+  // border-radius: 5px 5px 0 0;
 }
 
 .tabs button {
@@ -29,6 +30,8 @@
   text-align: center;
   font-weight: 500;
   color: var(--text-regular);
+  // margin-bottom: 1px;
+  border-radius: 0;
 }
 
 .tabs button.active {

@@ -1,10 +1,99 @@
 <div class="landind-container d-flex flex-column">
   <div
-    class="section-one d-flex flex-column flex-justify-content-center flex-align-items-center"
+    class="section-1 d-flex flex-column flex-justify-content-center flex-align-items-center"
   >
-    <h2>P2S-TDE, vous avez les clés!</h2>
+    <h1>P2S-TDE, vous avez les clés!</h1>
   </div>
-  <div class="section-two">
+
+  <div class="section-2">
     <app-search-bar></app-search-bar>
+  </div>
+
+  <div class="section-3 d-flex flex-justify-content-center">
+    <div
+      class="container d-flex flex-column flex-justify-content-center flex-align-items-center"
+    >
+      <h2>P2S-TDE, votre partenaire privilégié pour l'immobilier au Gabon</h2>
+      <div
+        class="text-content d-flex flex-column flex-justify-content-center flex-align-items-center"
+      >
+        <p>
+          Nous vous offrons un service de bout en bout dans vos activités
+          immobilières
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste omnis
+          esse, temporibus, voluptate aliquam magnam fugit, sit earum vitae iure
+          tempore! Aspernatur non molestias doloremque minima sit ipsa velit
+          magnam!
+        </p>
+      </div>
+
+      <div
+        class="links d-flex flex-justify-content-center flex-align-items-center"
+      >
+        <button>
+          <a
+            [routerLink]="['/homepage/nos-logements']"
+            routerLinkActive="active"
+          >
+            <fa-icon [icon]="faDoorOpen" [size]="'1x'"></fa-icon>
+            <span>Découvrez nos logements</span>
+          </a>
+        </button>
+        <p>
+          <a [routerLink]="['/homepage/nos-services']">
+            Nos différents services...
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-4">
+    <div class="container">
+      <!-- Primo blocco grande a sinistra -->
+      <div class="main-card">
+        <div class="content">
+          <div class="image-placeholder">
+            <div class="tag">On vous accompagne</div>
+          </div>
+          <h3>
+            Une panoplie de services pour vous accompagner dans tous vos projets
+            immobiliers dans toute la zone équatoriale
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec
+            odio non lacus fringilla dignissim quis vel diam. Integer convallis
+            purus odio, vitae semper leo posuere ac. Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Veniam corrupti aliquid perspiciatis
+            accusantium sunt non, nostrum aspernatur vitae velit libero. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Quas laboriosam
+            est, ad at cum expedita. Officiis ad molestias deserunt alias, nam
+            fuga molestiae, obcaecati similique iste sunt expedita eum quasi,
+            ipsa quia. Voluptate perspiciatis odio, expedita minima similique
+            veritatis sunt modi sapiente culpa doloribus, eius earum! Soluta
+            porro possimus quibusdam?
+          </p>
+          <a [routerLink]="['/homepage/overview']"
+            ><fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon
+          ></a>
+        </div>
+      </div>
+
+      <!-- Griglia dei blocchi a destra -->
+      <div class="grid">
+        <div class="card" *ngFor="let card of cards">
+          <div class="image-placeholder">
+            <div class="tag">{{ card.tag }}</div>
+          </div>
+          <h4>{{ card.title }}</h4>
+          <p>{{ card.description }}</p>
+          <a [routerLink]="['/homepage/overview']"
+            ><fa-icon [icon]="faArrowUpRightFromSquare"></fa-icon
+          ></a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
