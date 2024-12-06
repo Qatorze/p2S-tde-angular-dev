@@ -1,7 +1,42 @@
 .footer-container {
-  background-color: var(--dark-gray);
+  background-color: var(--white);
   color: white;
-  height: 70px;
+  height: max-content;
   margin: 20px 0 0 0;
-  padding: 0 50px;
+  padding: 30px 50px;
+
+  .section-1 {
+    margin-bottom: 20px;
+    .logo-section-1 {
+      width: 180px;
+      a {
+        width: 60px;
+        height: 60px;
+        margin: 10px 0;
+        img {
+          border-radius: 11px;
+        }
+      }
+    }
+    li,
+    p {
+      font-weight: 500;
+    }
+    h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+  }
+
+  hr {
+    height: 1.5px;
+    background-color: var(--text-regular);
+    border: none;
+  }
+  .section-2 {
+    margin-top: 20px;
+    p {
+      font-weight: 500;
+    }
+  }
 }

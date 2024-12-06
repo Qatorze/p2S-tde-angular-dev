@@ -96,4 +96,82 @@
       </div>
     </div>
   </div>
+  <div class="section-5 d-flex flex-justify-content-center">
+    <div class="left-container d-flex flex-column flex-align-items-center">
+      <div class="left-content d-flex flex-column">
+        <h3>
+          P2S-TDE, les travaux de l'équateur, nous vous accompagnons dans tous
+          vos travaux immobiliers partout dans la zone équatoriale
+        </h3>
+        <p>
+          Nous vous offrons un service de bout en bout dans vos activités
+          immobilières
+        </p>
+        <button>
+          <a>
+            <span>Confiez-nous vos projets</span>
+          </a>
+        </button>
+      </div>
+    </div>
+    <div class="img-container flex-fill d-flex flex-justify-content-center">
+      <div
+        class="img-content d-flex flex-justify-content-center flex-align-items-center"
+        [ngStyle]="{
+        'background-image': 'url(' + backgroundImage + ')',
+        'background-size': 'cover',
+        'background-position': 'center',
+        'background-repeat': 'no-repeat',
+      
+      }"
+      >
+        <img
+          ngSrc="assets/logo1.jpg"
+          alt="Logo p2S-tde"
+          width="30"
+          height="30"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="section-6">
+    <div
+      class="title-section d-flex flex-align-items-center flex-justify-content-between"
+    >
+      <h3>Découvrez les biens du moment</h3>
+      <p><a>Voir toutes les annonces...</a></p>
+    </div>
+    <!-- Griglia dei blocchi a destra -->
+    <div class="grid">
+      <div class="card" *ngFor="let card of cards">
+        <div class="image-placeholder">
+          <div class="tag">
+            <img
+              ngSrc="assets/logo1.jpg"
+              alt="Logo p2S-tde"
+              width="40"
+              height="30"
+              priority
+            />
+          </div>
+          <a routerLinkActive="active">
+            <fa-icon [icon]="faHeart"></fa-icon>
+          </a>
+        </div>
+        <div class="card-description">
+          <h4>{{ card.title }}</h4>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="final-link-section-6 d-flex flex-justify-content-center">
+      <p><a>Voir toutes les annonces...</a></p>
+    </div>
+  </div>
+  <div class="section-7"></div>
+  <div class="section-8"></div>
+  <div class="section-9"></div>
+  <div class="section-10"></div>
 </div>
