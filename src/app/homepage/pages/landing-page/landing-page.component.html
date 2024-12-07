@@ -1,4 +1,4 @@
-<div class="landind-container d-flex flex-column">
+<div class="landind-container">
   <div
     class="section-1 d-flex flex-column flex-justify-content-center flex-align-items-center"
   >
@@ -170,8 +170,77 @@
       <p><a>Voir toutes les annonces...</a></p>
     </div>
   </div>
-  <div class="section-7"></div>
-  <div class="section-8"></div>
+
+  <div class="section-7">
+    <div
+      class="title-section d-flex flex-align-items-center flex-justify-content-between"
+    >
+      <h3>Estimation gratuite de votre bien immobilier</h3>
+    </div>
+    <div class="content">
+      <div class="text-content">
+        <div>
+          <p>Obtenez une première estimation immobilière de votre bien</p>
+          <button class="btn-search">
+            <span>Estimer mon bien gratuitement</span>
+          </button>
+        </div>
+      </div>
+      <div class="icons">
+        <ul>
+          <li><fa-icon [icon]="faHouse"></fa-icon> <span>Maison</span></li>
+          <li><fa-icon [icon]="faBuilding"></fa-icon> <span>Immeuble</span></li>
+          <li>
+            <fa-icon [icon]="faStore"></fa-icon> <span>Fond de commerce</span>
+          </li>
+        </ul>
+
+        <ul>
+          <li><fa-icon [icon]="faLandmark"></fa-icon> <span>Terrain</span></li>
+          <li><fa-icon [icon]="faHotel"></fa-icon> <span>Appartement</span></li>
+          <li>
+            <fa-icon [icon]="faWarehouse"></fa-icon>
+            <span>Local commercial</span>
+          </li>
+        </ul>
+      </div>
+      <div class="image-placeholder"></div>
+    </div>
+  </div>
+  <div class="section-8">
+    <div class="news-container">
+      <h3>Nos conseils et nos dernières actualités</h3>
+      <p>
+        Restez informé des dernières informations sur P2S-TDE les marché
+        immobilier sous l'équateur :
+      </p>
+
+      <!-- Bottoni dei filtri -->
+      <div class="filters">
+        <button>Tout</button>
+        <button>Société</button>
+        <button>Logements</button>
+        <button>Territoire</button>
+        <button>+</button>
+      </div>
+
+      <!-- Griglia degli articoli -->
+      <div class="articles-grid">
+        <div class="article-card" *ngFor="let article of articles">
+          <div
+            class="article-image"
+            [style.backgroundImage]="'url(' + article.image + ')'"
+          ></div>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+        </div>
+      </div>
+
+      <div class="view-more-container">
+        <a class="view-more">Voir plus d'articles...</a>
+      </div>
+    </div>
+  </div>
   <div class="section-9"></div>
   <div class="section-10"></div>
 </div>
