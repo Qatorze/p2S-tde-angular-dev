@@ -3,7 +3,7 @@ import {
   faDoorOpen,
   faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import {
   faHouse,
   faBuilding,
@@ -12,6 +12,9 @@ import {
   faHotel,
   faWarehouse,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { faMobileAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp as faWhatsappBrand } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-landing-page',
@@ -34,6 +37,10 @@ export class LandingPageComponent {
   faDoorOpen = faDoorOpen;
   faHeart = faHeart;
   faArrowUpRightFromSquare = faArrowUpRightFromSquare;
+  faEnvelope = faEnvelope;
+  faWhatsapp = faWhatsappBrand;
+  faMobileAlt = faMobileAlt;
+  faPhone = faPhone;
 
   cards = [
     {
@@ -96,4 +103,47 @@ export class LandingPageComponent {
       image: 'https://via.placeholder.com/300x200',
     },
   ];
+
+  // Dati dinamici per domande e risposte
+  questions = [
+    [
+      {
+        question: 'Pourquoi tant de bureaucratie en immobilier ?',
+        answer: 'Parce que les démarches administratives sont complexes.',
+        open: false,
+      },
+      {
+        question: 'Comment obtenir un prêt immobilier ?',
+        answer: 'Contactez votre banque avec les documents requis.',
+        open: false,
+      },
+      {
+        question: 'Quelle est le numéro du cadastre ?',
+        answer: 'C’est un code attribué à chaque propriété.',
+        open: false,
+      },
+    ],
+    [
+      {
+        question: 'Que veut dire P2S-RDE ?',
+        answer: 'C’est une nouvelle réglementation.',
+        open: false,
+      },
+      {
+        question: 'Quels documents pour acheter un terrain ?',
+        answer: 'Un acte de vente, une pièce d’identité et le plan du terrain.',
+        open: false,
+      },
+      {
+        question: 'Les données sur l’immobilier à Libreville',
+        answer: 'Elles sont disponibles auprès des agences immobilières.',
+        open: false,
+      },
+    ],
+  ];
+
+  // Funzione per gestire l'apertura e la chiusura dell'accordion
+  toggle(item: any): void {
+    item.open = !item.open;
+  }
 }

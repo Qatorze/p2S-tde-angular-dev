@@ -1,22 +1,19 @@
 <div class="landind-container">
-  <div
-    class="section-1 d-flex flex-column flex-justify-content-center flex-align-items-center"
-  >
+  <!-- Section 1 -->
+  <div class="section-1">
     <h1>P2S-TDE, vous avez les clés!</h1>
   </div>
 
+  <!-- Section 2 -->
   <div class="section-2">
     <app-search-bar></app-search-bar>
   </div>
 
-  <div class="section-3 d-flex flex-justify-content-center">
-    <div
-      class="container d-flex flex-column flex-justify-content-center flex-align-items-center"
-    >
+  <!-- Section 3 -->
+  <div class="section-3">
+    <div class="container">
       <h2>P2S-TDE, votre partenaire privilégié pour l'immobilier au Gabon</h2>
-      <div
-        class="text-content d-flex flex-column flex-justify-content-center flex-align-items-center"
-      >
+      <div class="text-content">
         <p>
           Nous vous offrons un service de bout en bout dans vos activités
           immobilières
@@ -28,15 +25,9 @@
           magnam!
         </p>
       </div>
-
-      <div
-        class="links d-flex flex-justify-content-center flex-align-items-center"
-      >
-        <button>
-          <a
-            [routerLink]="['/homepage/nos-logements']"
-            routerLinkActive="active"
-          >
+      <div class="links">
+        <button class="button-grey-black">
+          <a [routerLink]="['/homepage/nos-logements']">
             <fa-icon [icon]="faDoorOpen" [size]="'1x'"></fa-icon>
             <span>Découvrez nos logements</span>
           </a>
@@ -50,9 +41,10 @@
     </div>
   </div>
 
+  <!-- Section 4 -->
   <div class="section-4">
     <div class="container">
-      <!-- Primo blocco grande a sinistra -->
+      <!-- Premier bloc à gauche -->
       <div class="main-card">
         <div class="content">
           <div class="image-placeholder">
@@ -81,7 +73,7 @@
         </div>
       </div>
 
-      <!-- Griglia dei blocchi a destra -->
+      <!-- Grille des bolcs de droite -->
       <div class="grid">
         <div class="card" *ngFor="let card of cards">
           <div class="image-placeholder">
@@ -96,9 +88,11 @@
       </div>
     </div>
   </div>
-  <div class="section-5 d-flex flex-justify-content-center">
-    <div class="left-container d-flex flex-column flex-align-items-center">
-      <div class="left-content d-flex flex-column">
+
+  <!-- Section 5 -->
+  <div class="section-5">
+    <div class="left-container">
+      <div class="left-content">
         <h3>
           P2S-TDE, les travaux de l'équateur, nous vous accompagnons dans tous
           vos travaux immobiliers partout dans la zone équatoriale
@@ -107,16 +101,16 @@
           Nous vous offrons un service de bout en bout dans vos activités
           immobilières
         </p>
-        <button>
+        <button class="button-grey-black">
           <a>
             <span>Confiez-nous vos projets</span>
           </a>
         </button>
       </div>
     </div>
-    <div class="img-container flex-fill d-flex flex-justify-content-center">
+    <div class="img-container">
       <div
-        class="img-content d-flex flex-justify-content-center flex-align-items-center"
+        class="img-content"
         [ngStyle]="{
         'background-image': 'url(' + backgroundImage + ')',
         'background-size': 'cover',
@@ -136,14 +130,13 @@
     </div>
   </div>
 
+  <!-- Section 6 -->
   <div class="section-6">
-    <div
-      class="title-section d-flex flex-align-items-center flex-justify-content-between"
-    >
+    <div class="title-section">
       <h3>Découvrez les biens du moment</h3>
       <p><a>Voir toutes les annonces...</a></p>
     </div>
-    <!-- Griglia dei blocchi a destra -->
+    <!-- Grille des blocs de droite -->
     <div class="grid">
       <div class="card" *ngFor="let card of cards">
         <div class="image-placeholder">
@@ -166,22 +159,21 @@
         </div>
       </div>
     </div>
-    <div class="final-link-section-6 d-flex flex-justify-content-center">
+    <div class="final-link-section-6">
       <p><a>Voir toutes les annonces...</a></p>
     </div>
   </div>
 
+  <!-- Section 7 -->
   <div class="section-7">
-    <div
-      class="title-section d-flex flex-align-items-center flex-justify-content-between"
-    >
+    <div class="title-section">
       <h3>Estimation gratuite de votre bien immobilier</h3>
     </div>
     <div class="content">
       <div class="text-content">
         <div>
           <p>Obtenez une première estimation immobilière de votre bien</p>
-          <button class="btn-search">
+          <button class="btn-red-white">
             <span>Estimer mon bien gratuitement</span>
           </button>
         </div>
@@ -194,7 +186,6 @@
             <fa-icon [icon]="faStore"></fa-icon> <span>Fond de commerce</span>
           </li>
         </ul>
-
         <ul>
           <li><fa-icon [icon]="faLandmark"></fa-icon> <span>Terrain</span></li>
           <li><fa-icon [icon]="faHotel"></fa-icon> <span>Appartement</span></li>
@@ -207,6 +198,8 @@
       <div class="image-placeholder"></div>
     </div>
   </div>
+
+  <!-- Section 8 -->
   <div class="section-8">
     <div class="news-container">
       <h3>Nos conseils et nos dernières actualités</h3>
@@ -214,8 +207,7 @@
         Restez informé des dernières informations sur P2S-TDE les marché
         immobilier sous l'équateur :
       </p>
-
-      <!-- Bottoni dei filtri -->
+      <!-- Bottons des filtres -->
       <div class="filters">
         <button>Tout</button>
         <button>Société</button>
@@ -223,24 +215,101 @@
         <button>Territoire</button>
         <button>+</button>
       </div>
-
-      <!-- Griglia degli articoli -->
+      <!-- Grille des articles -->
       <div class="articles-grid">
         <div class="article-card" *ngFor="let article of articles">
           <div
             class="article-image"
             [style.backgroundImage]="'url(' + article.image + ')'"
           ></div>
-          <h3>{{ article.title }}</h3>
+          <h4>{{ article.title }}</h4>
           <p>{{ article.description }}</p>
         </div>
       </div>
-
       <div class="view-more-container">
         <a class="view-more">Voir plus d'articles...</a>
       </div>
     </div>
   </div>
-  <div class="section-9"></div>
-  <div class="section-10"></div>
+
+  <!-- Section 9 -->
+  <div class="section-9">
+    <div class="container">
+      <div class="image-placeholder"></div>
+      <div class="text-content">
+        <div class="content">
+          <p>Restez informé(es)</p>
+          <h3>Ne manquez plus nos actualitées</h3>
+          <p class="text-2">
+            Rappports, bons plans, conseils, chiffres clés. P2S-TDE vous
+            accompagne dans tous vos projets et vous tiens informé
+          </p>
+          <div>
+            <app-form-input-email></app-form-input-email>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="section-10">
+    <div class="faq-container">
+      <h3>Questions les plus fréquentes</h3>
+      <div class="faq-grid">
+        <div class="faq-column" *ngFor="let column of questions">
+          <div class="faq-item" *ngFor="let item of column">
+            <div class="faq-question" (click)="toggle(item)">
+              <span>{{ item.question }}</span>
+              <span class="icon" [ngClass]="{ open: item.open }">></span>
+            </div>
+            <div class="faq-answer" *ngIf="item.open">
+              <p>{{ item.answer }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 11 -->
+  <div class="section-11">
+    <h3>Pour toutes autres questions, Contactez-nous</h3>
+    <div class="container">
+      <div class="content">
+        <div class="text-content">
+          <p>Notre équipe se tiens à votre disposition pour vous assister</p>
+          <button>
+            <a>
+              <span>Formulaire de contact</span>
+            </a>
+          </button>
+        </div>
+        <hr />
+        <div class="contact-content">
+          <div>
+            <p>
+              <fa-icon [icon]="faEnvelope"></fa-icon
+              ><span>Email:</span> contact&#64;p2s-tde.com
+            </p>
+            <p>
+              <fa-icon [icon]="faPhone"></fa-icon><span>Standard:</span> +228 70
+              27 51 43
+            </p>
+          </div>
+          <div>
+            <p>
+              <fa-icon [icon]="faWhatsapp"></fa-icon><span>Whatsapp:</span> +241
+              074 92 69 28
+            </p>
+            <p>
+              <fa-icon [icon]="faMobileAlt"></fa-icon
+              ><span>Téléphone:</span> +241 62 55 82 76
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="image-placeholder"></div>
+    </div>
+  </div>
 </div>

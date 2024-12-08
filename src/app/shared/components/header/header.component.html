@@ -1,16 +1,14 @@
 <nav class="navbar">
-  <div
-    class="navbar-container flex-fill d-flex flex-justify-content-between flex-align-items-center"
-  >
+  <div class="navbar-container">
     <ul class="header-links">
       <li>
         <a [routerLink]="['/homepage']">Home</a>
       </li>
       <li>
-        <a [routerLink]="['/homepage/nos-logements']">Nos Logements...</a>
+        <a [routerLink]="['/homepage/nos-logements']">Nos Logements</a>
       </li>
       <li>
-        <a [routerLink]="['/homepage/nos-services']">Nos Services...</a>
+        <a [routerLink]="['/homepage/nos-services']">Nos Services</a>
       </li>
     </ul>
     <!-- Logo centré -->
@@ -23,10 +21,10 @@
         priority
       />
     </a>
-    <div class="d-flex flex-justify-content-between flex-align-items-between">
+    <div class="right-links">
       <ul>
         <a [routerLink]="['/homepage/about-us-P2S-tde']">
-          <li>About us...</li>
+          <li>About us</li>
         </a>
         <li>
           <a (click)="toggleModal()">
@@ -39,7 +37,7 @@
           </a>
         </li>
       </ul>
-      <button>
+      <button class="button-grey-black">
         <a [routerLink]="['/auth/login']" routerLinkActive="active">
           <span>Connexion</span>
           <fa-icon [icon]="faSignInAlt" [size]="'1x'"></fa-icon>

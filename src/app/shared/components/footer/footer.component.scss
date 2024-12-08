@@ -2,13 +2,16 @@
   background-color: var(--white);
   color: white;
   height: max-content;
-  margin: 20px 0 0 0;
   padding: 30px 50px;
 
   .section-1 {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
     .logo-section-1 {
       width: 180px;
+      display: flex;
+      flex-direction: column;
       a {
         width: 60px;
         height: 60px;
@@ -34,6 +37,9 @@
     border: none;
   }
   .section-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
     p {
       font-weight: 500;

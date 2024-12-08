@@ -9,6 +9,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ClickOutsideModalDirective } from './directives/click-outside-modal.directive';
 import { ToggleSearchSectionDirective } from './directives/toggle-search-section.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormInputEmailComponent } from './components/form-input-email/form-input-email.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchBarComponent,
     ClickOutsideModalDirective,
     ToggleSearchSectionDirective,
+    FormInputEmailComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     InternalNotFoundPageComponent,
     SearchBarComponent,
+    FormInputEmailComponent,
   ],
 })
 export class SharedModule {}

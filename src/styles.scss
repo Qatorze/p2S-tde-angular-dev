@@ -56,182 +56,39 @@ a {
 }
 
 body {
-  // padding: 0 100px;
   min-height: 100vh;
   background-color: var(--background-light);
   color: var(--text-regular); /* Testo principale */
   font-family: "Poppins", sans-serif; /* Imposta Poppins come font principale per il corpo */
 }
 
-// Layout
+// Buttons
 
-.module-container {
-  // background-color: var(--primary); /* Sfondo nero per il contenitore */
-  min-height: 100vh;
-  /* Testo bianco */
+.button-grey-black {
+  color: var(--text-regular);
+  font-weight: 700;
+  font-size: 11px;
+  width: max-content;
+  padding: 6px 6px;
+  background-color: var(--white);
+  border: 2px solid var(--text-regular);
+  border-radius: 5px;
+  &:hover {
+    background-color: var(--light-gray);
+  }
+  transition: background-color 0.3s ease-in-out;
 }
 
-.page-container {
-  background-color: var(--accent-blue);
-  border-radius: 10px;
-  margin: 0 40px;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-justify-content-center {
-  justify-content: center;
-}
-
-.flex-justify-content-between {
-  justify-content: space-between;
-}
-
-.flex-align-items-center {
-  align-items: center;
-}
-
-.flex-align-items-between {
-  align-items: space-between;
-}
-
-.flex-fill {
-  flex: 1 1 auto; // Pour que l'élément prenne tout l'espace disponible
-}
-
-.flex-30 {
-  flex: 1 1 30%;
-}
-
-.flex-40 {
-  flex: 1 1 40%;
-}
-
-.flex-50 {
-  flex: 1 1 50%;
-}
-
-.flex-60 {
-  flex: 1 1 60%;
-}
-
-.flex-70 {
-  flex: 1 1 70%;
-}
-
-//Utils
-
-.w-50 {
-  width: 50%;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-.p-5 {
-  padding: 5px;
-}
-
-.p-10 {
-  padding: 10px;
-}
-
-.p-15 {
-  padding: 15px;
-}
-
-.p-20 {
-  padding: 20px;
-}
-
-.p-25 {
-  padding: 25px;
-}
-
-.m-5 {
-  margin: 5px;
-}
-
-.m-10 {
-  margin: 10px;
-}
-
-.m-15 {
-  margin: 15px;
-}
-
-.m-20 {
-  margin: 20px;
-}
-
-.m-25 {
-  margin: 25px;
-}
-
-.mt-5 {
-  margin-top: 5px;
-}
-
-.mt-10 {
-  margin-top: 10px;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mt-25 {
-  margin-top: 25px;
-}
-
-.mb-5 {
-  margin-bottom: 5px;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-.mb-25 {
-  margin-bottom: 25px;
-}
-
-// Components
-
-.formulaire {
-  width: 410px;
-  padding: 15px 25px;
-  color: white;
-  border: 1px solid var(--lightGray);
-  background-color: var(--dark-gray);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-button {
+.btn-red-white {
+  width: max-content;
   padding: 10px 20px;
-  background-color: var(--accent-color); /* Colore di accento blu */
-  color: var(--secondary); /* Testo bianco */
+  background-color: var(--primary);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3; /* Colore di hover più scuro */
+  span {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+  }
 }

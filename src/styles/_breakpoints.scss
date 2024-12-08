@@ -1,0 +1,26 @@
+// Variabili per i breakpoint
+$breakpoints: (
+  // Téléphones petits (petits smartphones)
+  xs: 576px,
+  // Tablettes (tablettes en mode portrait)
+  sm: 768px,
+  // Ordinateurs portables (écrans d'ordinateur moyen)
+  md: 992px,
+  // Écrans larges (écrans de bureau ou grandes tablettes en paysage)
+  lg: 1200px
+);
+
+// Mixin per i breakpoint
+@mixin media-breakpoint-up($breakpoint) {
+  $breakpoint-size: map-get($breakpoints, $breakpoint);
+  @media (min-width: #{$breakpoint-size}) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  $breakpoint-size: map-get($breakpoints, $breakpoint);
+  @media (max-width: #{$breakpoint-size}) {
+    @content;
+  }
+}
