@@ -5,7 +5,6 @@
   left: 0;
   right: 0;
   z-index: 2;
-
   .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -20,11 +19,9 @@
         border-radius: 11px;
       }
     }
-
     .right-links {
       display: flex;
       justify-content: space-between;
-
       button {
         margin: 0 0 0 30px;
       }
@@ -60,7 +57,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   .modal-content {
     margin-top: 300px;
     width: 100vw;

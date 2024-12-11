@@ -1,7 +1,18 @@
-.sidebar {
-  padding: 20px;
-  height: calc(100vh - 40px);
-  background-color: var(--dark-gray);
-  border-radius: 10px;
-  color: white;
+.sidebar-container {
+  position: sticky;
+  top: 0px;
+  padding: 10px;
+  height: max-content;
+  .sidebar-content {
+    background-color: var(--primary);
+    border-radius: 5px;
+    padding: 20px;
+    h3,
+    li {
+      color: var(--white);
+    }
+    ul {
+      margin-top: 20px;
+    }
+  }
 }

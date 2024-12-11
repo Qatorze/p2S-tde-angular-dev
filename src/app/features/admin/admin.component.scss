@@ -1,11 +1,14 @@
-.admin-container {
-  padding: 20px;
-  gap: 20px;
-
-  .admin-page {
-    padding: 20px;
-    height: calc(100vh - 40px);
-    background-color: var(--accent);
-    border-radius: 10px;
+.admin-module-container {
+  .admin-module-content {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 1px;
+    min-height: 100vh;
+    .sidebar-container {
+      flex: 1 1 25%;
+    }
+    .admin-module-pages {
+      flex: 1 1 75%;
+    }
   }
 }

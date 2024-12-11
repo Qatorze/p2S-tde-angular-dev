@@ -1,0 +1,17 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  .img-container {
+    width: 40%;
+    height: 100vh;
+    background-color: cornflowerblue;
+  }
+  .form-container {
+    background-color: bisque;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+  }
+}

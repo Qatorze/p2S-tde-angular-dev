@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { emailValidator } from '../../../core/Validators/email.validator';
 import { passwordMatchValidator } from '../../../core/Validators/passwordsmatches.validators';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Icona "spinner" (solido)
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,11 @@ import { passwordMatchValidator } from '../../../core/Validators/passwordsmatche
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
+  // Icons
+  faSpinner = faSpinner; // Icona spinner
+
   public form!: FormGroup;
+  public loading: boolean = false; // Pour le chargement lors de l'interaction avec le database
 
   //Qui un oggetto per la mia gestione degli errori legati al mio formulario.
   public formErrors: {
@@ -112,6 +117,9 @@ export class RegisterComponent implements OnInit {
 
   public submit(): void {
     if (this.form.valid) {
+      // Attiva lo stato di caricamento
+      this.loading = true;
+
       const surname = this.form.get('surname')?.value;
       const name = this.form.get('name')?.value;
       const email = this.form.get('email')?.value;
@@ -119,11 +127,14 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register$(surname, name, email, password).subscribe({
         next: (user) => {
+          // Disattiva lo stato di caricamento al successo
+          this.loading = false;
           this.form.reset();
           this.router.navigate(['/auth/login']);
         },
-        // messaggi di errori provenienti dal clienteService dopo la sua interazione con il server
         error: (error) => {
+          // Disattiva lo stato di caricamento in caso di errore
+          this.loading = false;
           this.formErrors['form'].message = error.message;
         },
       });

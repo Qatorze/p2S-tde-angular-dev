@@ -1,63 +1,91 @@
-.formulaire {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  background-color: var(--white);
-  padding: 9px;
-  border-radius: 6px;
-}
+.input-formulaire {
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: var(--white);
+    padding: 9px;
+    border-radius: 6px;
 
-.form-control {
-  display: flex;
-  width: 100%;
-}
+    .form-control {
+      display: flex;
+      width: 100%;
+      input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
 
-input {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
+      input:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
 
-input:focus {
-  border-color: #007bff;
-  outline: none;
-}
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary);
+        color: white;
+        min-width: 30px; /* Imposta una larghezza minima */
+        height: 29px; /* Imposta un'altezza costante */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        .button-text {
+          display: inline-block;
+        }
+        .loading-spinner {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #007bff; /* Colore dell'icona */
+          animation: spin 1s linear infinite; /* Animazione di rotazione */
 
-.errorText {
-  color: red;
-  font-size: 12px;
-}
+          /* Stile dell'icona dentro il bottone */
+          .loading-spinner fa-icon {
+            font-size: 16px;
+          }
+        }
+      }
+      button[disabled] {
+        border: none;
+        background-color: var(--primary);
+        color: var(--text-regular);
+        cursor: not-allowed;
+        .loading-spinner {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #007bff; /* Colore dell'icona */
+          animation: spin 1s linear infinite; /* Animazione di rotazione */
 
-button {
-  background-color: var(--primary);
-  color: white;
-  padding: 6px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #ccc;
-}
-
-.loading-spinner {
-  font-size: 16px;
-}
-
-.spinner {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+          /* Stile dell'icona dentro il bottone */
+          .loading-spinner fa-icon {
+            font-size: 16px;
+          }
+        }
+        &:hover {
+          opacity: 0.8;
+          color: white;
+        }
+      }
+    }
   }
-  to {
-    transform: rotate(360deg);
+
+  .errorText {
+    color: var(--primary);
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 13px;
   }
 }

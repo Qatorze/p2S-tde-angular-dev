@@ -1,11 +1,11 @@
 .footer-container {
-  background-color: var(--white);
   color: white;
   height: max-content;
-  padding: 30px 50px;
-
+  margin: 0;
   .section-1 {
-    margin-bottom: 20px;
+    padding: 30px 50px;
+    background-color: var(--white);
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     .logo-section-1 {
@@ -30,18 +30,14 @@
       margin-bottom: 5px;
     }
   }
-
-  hr {
-    height: 1.5px;
-    background-color: var(--text-regular);
-    border: none;
-  }
   .section-2 {
+    padding: 10px 50px 2px 50px;
+    background-color: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
     p {
+      font-size: 13px;
       font-weight: 500;
     }
   }

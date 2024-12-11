@@ -1,34 +1,37 @@
-<form class="formulaire" [formGroup]="form" (ngSubmit)="submit()">
-  <div class="form-control">
-    <input
-      formControlName="email"
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Votre adresse email"
-      (change)="updateFormErrors()"
-    />
+<!-- Ici toutes les classes de style sont définientt dans le fichier de style propre à ce composant-->
+<form class="input-formulaire" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-container">
+    <div class="form-control">
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Votre adresse email"
+        (change)="updateFormErrors()"
+      />
+    </div>
+
+    <!-- Pulsante di invio -->
+    <div class="btn-container">
+      <button class="btn" type="submit" [disabled]="loading">
+        <!-- Testo "Submit" -->
+
+        <span class="button-text" *ngIf="!loading">
+          <a>
+            <fa-icon [icon]="faPaperPlane"></fa-icon>
+          </a>
+        </span>
+        <!-- Spinner di caricamento -->
+        <div class="loading-spinner" *ngIf="loading">
+          <fa-icon [icon]="faSpinner" class="spinner"></fa-icon>
+        </div>
+      </button>
+    </div>
   </div>
 
   <!-- Messaggi di errore -->
   <div *ngIf="formErrors['form'].message">
     <p class="errorText">{{ formErrors["form"].message }}</p>
-  </div>
-
-  <!-- Pulsante di invio -->
-  <div class="button-container">
-    <button class="btn" type="submit" [disabled]="loading">
-      <!-- Testo "Submit" -->
-
-      <span class="button-text" *ngIf="!loading">
-        <a>
-          <fa-icon [icon]="faPaperPlane"></fa-icon>
-        </a>
-      </span>
-      <!-- Spinner di caricamento -->
-      <div class="loading-spinner" *ngIf="loading">
-        <fa-icon [icon]="faSpinner" class="spinner"></fa-icon>
-      </div>
-    </button>
   </div>
 </form>

@@ -1,11 +1,7 @@
-<form
-  class="formulaire d-flex flex-column"
-  [formGroup]="form"
-  (ngSubmit)="submit()"
->
+<form class="auth-formulaire" [formGroup]="form" (ngSubmit)="submit()">
   <h3 class="form-title">Login</h3>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="email">Email<span class="asterisco">*</span></label>
     <input
       formControlName="email"
@@ -17,7 +13,7 @@
     />
   </div>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="password">Password<span class="asterisco">*</span></label>
     <input
       formControlName="password"
@@ -36,7 +32,7 @@
   </div>
   <!-- <button class="btn btn-primary mb-5 mt-10">Sign in</button> -->
   <!-- Pulsante con condizione ternaria -->
-  <div class="button-container mt-20 d-flex flex-justify-content-center">
+  <div class="button-container">
     <button class="btn" type="submit" [disabled]="loading">
       <!-- Testo "Sign in" visibile solo quando non è in caricamento -->
       <span class="button-text" *ngIf="!loading">Sign in</span>

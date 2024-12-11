@@ -1,11 +1,7 @@
-<form
-  class="formulaire d-flex flex-column"
-  [formGroup]="form"
-  (ngSubmit)="submit()"
->
+<form class="auth-formulaire" [formGroup]="form" (ngSubmit)="submit()">
   <h3 class="form-title">Register</h3>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="name">Name<span class="asterisco">*</span></label>
     <input
       formControlName="name"
@@ -22,7 +18,7 @@
     </div>
   </div>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="surname">Surname<span class="asterisco">*</span></label>
     <input
       formControlName="surname"
@@ -39,7 +35,7 @@
     </div>
   </div>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="email">Email<span class="asterisco">*</span></label>
     <input
       formControlName="email"
@@ -56,7 +52,7 @@
     </div>
   </div>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="password">Password<span class="asterisco">*</span></label>
     <input
       formControlName="password"
@@ -73,7 +69,7 @@
     </div>
   </div>
 
-  <div class="form-control d-flex flex-column">
+  <div class="form-control">
     <label for="confirmPassword"
       >Conferma Password<span class="asterisco">*</span></label
     >
@@ -98,5 +94,15 @@
     <p class="errorText">{{ formErrors["form"].message }}</p>
   </div>
 
-  <button class="btn btn-primary mb-5 mt-10">Submit</button>
+  <div class="button-container">
+    <button class="btn" type="submit" [disabled]="loading">
+      <!-- Testo "Sign in" visibile solo quando non è in caricamento -->
+      <span class="button-text" *ngIf="!loading">Submit</span>
+
+      <!-- Spinner visibile solo quando è in caricamento -->
+      <div class="loading-spinner" *ngIf="loading">
+        <fa-icon [icon]="faSpinner" class="spinner"></fa-icon>
+      </div>
+    </button>
+  </div>
 </form>

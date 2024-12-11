@@ -1,15 +1,18 @@
-<div class="sidebar">
-  <h3>Side-nav-bar-component</h3>
-  <ul class="mt-20">
-    <li>
-      <a [routerLink]="['/admin/dashboard']" routerLinkActive="active">
-        Dashboard
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="['/admin/manage-users']" routerLinkActive="active">
-        Manage users
-      </a>
-    </li>
-  </ul>
+<!-- Ici toutes les classes de style sont définientt dans le fichier de style propre à ce composant-->
+<div class="sidebar-container">
+  <div class="sidebar-content">
+    <h3>Side-nav-bar-component</h3>
+    <ul>
+      <li>
+        <a [routerLink]="['/admin/dashboard']" routerLinkActive="active">
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/admin/manage-users']" routerLinkActive="active">
+          Manage users
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

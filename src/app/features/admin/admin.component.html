@@ -1,8 +1,12 @@
-<div class="admin-container d-flex">
-  <app-side-nav-bar></app-side-nav-bar>
-  <div
-    class="admin-page flex-fill d-flex flex-justify-content-center flex-align-items-center"
-  >
-    <router-outlet></router-outlet>
+<!-- Ici toutes les classes de style sont définientt dans le fichier de style propre à ce composant-->
+<div class="admin-module-container">
+  <div class="admin-module-content">
+    <div class="sidebar-container">
+      <app-side-nav-bar></app-side-nav-bar>
+    </div>
+    <div class="admin-module-pages">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
