@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { emailValidator } from '../../../core/Validators/email.validator';
 import { passwordMatchValidator } from '../../../core/Validators/passwordsmatches.validators';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Icona "spinner" (solido)
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -15,13 +15,13 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Icona "spinner
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
-  // Icons
-  faSpinner = faSpinner; // Icona spinner
+  // Icônes
+  faSpinner = faSpinner;
 
   public form!: FormGroup;
-  public loading: boolean = false; // Pour le chargement lors de l'interaction avec le database
+  public loading: boolean = false; // Pour l'état de chargement lors de l'interaction avec la base de données
 
-  //Qui un oggetto per la mia gestione degli errori legati al mio formulario.
+  // Un objet pour la gestion des erreurs liées à mon formulaire
   public formErrors: {
     [campo: string]: {
       message: string;
@@ -31,41 +31,41 @@ export class RegisterComponent implements OnInit {
     name: {
       message: '',
       validations: {
-        minlength: 'Il nome deve avere almeno 3 lettere.',
-        required: 'Il nome è obbligatorio.',
+        minlength: 'Le prénom doit contenir au moins 3 caractères.',
+        required: 'Le prénom est obligatoire.',
         pattern:
-          "Il nome non puo' contenere spazi finali o caratteri speciali.",
+          "Le prénom ne peut pas contenir d'espaces finaux ou de caractères spéciaux.",
       },
     },
     surname: {
       message: '',
       validations: {
-        minlength: 'Il cognome deve avere almeno 3 lettere.',
-        required: 'Il cognome è obbligatorio.',
+        minlength: 'Le nom doit contenir au moins 3 lettres.',
+        required: 'Le nom est obligatoire.',
         pattern:
-          "Il cognome non puo' contenere spazi finali o caratteri speciali.",
+          "Le nom ne peut pas contenir d'espaces finaux ou de caractères spéciaux.",
       },
     },
     email: {
       message: '',
       validations: {
-        emailInvalid: "Inserisci un'email valida.",
-        required: "L'email è obbligatoria.",
+        emailInvalid: 'Veuillez saisir un e-mail valide.',
+        required: "L'e-mail est obligatoire.",
       },
     },
     password: {
       message: '',
       validations: {
         pattern:
-          'La password deve essere di almeno 8 caratteri e contenere almeno una lettera, un numero e un carattere speciale tra: ! @ # $ % ^ & * ( ) _ + - = [ ] { } ; \' : "  | , . < > / ?.',
-        required: 'La password è obbligatoria.',
+          'Le mot de passe doit comporter au moins 8 caractères et contenir au moins une lettre, un chiffre et un caractère spécial parmi : ! @ # $ % ^ & * ( ) _ + - = [ ] { } ; \' : "  | , . < > / ?.',
+        required: 'Le mot de passe est obligatoire.',
       },
     },
     confirmPassword: {
       message: '',
       validations: {
-        notMatch: 'Le password non coincidono.',
-        required: 'La conferma della password è obbligatoria.',
+        notMatch: 'Les mots de passe ne correspondent pas.',
+        required: 'La confirmation du mot de passe est obligatoire.',
       },
     },
     form: {
@@ -101,12 +101,12 @@ export class RegisterComponent implements OnInit {
         password: new FormControl('', [
           Validators.required,
           Validators.pattern(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/])[A-Za-z\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/]{8,}$/
           ),
         ]),
         confirmPassword: new FormControl('', [Validators.required]),
       },
-      // Qui un validator personnalizzato passato in secondo param per il FormGroup
+      // Ici, un validateur personnalisé passé en second paramètre pour le FormGroup
       { validators: passwordMatchValidator() }
     );
   }
@@ -117,7 +117,7 @@ export class RegisterComponent implements OnInit {
 
   public submit(): void {
     if (this.form.valid) {
-      // Attiva lo stato di caricamento
+      // Active l'état de chargement
       this.loading = true;
 
       const surname = this.form.get('surname')?.value;
@@ -127,13 +127,13 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register$(surname, name, email, password).subscribe({
         next: (user) => {
-          // Disattiva lo stato di caricamento al successo
+          // Désactive l'état de chargement en cas de succès
           this.loading = false;
           this.form.reset();
           this.router.navigate(['/auth/login']);
         },
         error: (error) => {
-          // Disattiva lo stato di caricamento in caso di errore
+          // Désactive l'état de chargement en cas d'erreur
           this.loading = false;
           this.formErrors['form'].message = error.message;
         },
@@ -141,7 +141,7 @@ export class RegisterComponent implements OnInit {
     } else {
       this.updateFormErrors();
       this.formErrors['form'].message =
-        'Le formulaire est incomplet ou contient des erreurs, verifier les champs.';
+        'Le formulaire est incomplet ou contient des erreurs, veuillez vérifier les champs.';
     }
   }
 }

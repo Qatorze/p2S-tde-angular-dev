@@ -3,24 +3,21 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 
 export const preventLoggedInGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService); // Inietta il servizio di autenticazione
-  const router = inject(Router); // Inietta il modulo Router per la redirezione
+  const authService = inject(AuthService); // Injecte le service d'authentification
+  const router = inject(Router); // Injecte le Module Router pour les eventuelles redirections
 
-  // Verifica se l'utente è autenticato
+  // Verifie si le user est connecté
   if (authService.isAuthenticated()) {
-    const userRole = authService.getUserRole(); // Ottieni il ruolo dell'utente loggato
+    const userRole = authService.getUserRole(); // Obtient le role du user connecté
 
-    // Se l'utente è autenticato e ha un ruolo specifico
+    // Ici on regirige en function du role du user
     if (userRole === 'user') {
-      // Se il ruolo è 'user', lo redirigi alla pagina del feed con id e nome
       router.navigate(['/user/feed']);
     } else if (userRole === 'admin') {
-      // Se il ruolo è 'admin', lo redirigi alla dashboard con id e nome
       router.navigate(['/admin/dashboard']);
     }
-    // Blocca l'accesso alla route corrente (login, registrazione, etc.)
+    // Bloque la navigation vers route demandée se le user ne risulte pas connecté ou n'a pas le role requis pour la route de destination.
     return false;
   }
-  // Se l'utente non è autenticato, permette la navigazione
   return true;
 };

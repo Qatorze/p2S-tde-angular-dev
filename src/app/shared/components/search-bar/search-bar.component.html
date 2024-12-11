@@ -1,5 +1,5 @@
 <div class="tabs-container">
-  <!-- Schede di navigazione -->
+  <!-- Bar de navigation -->
   <div class="tabs">
     <button
       *ngFor="let tab of tabs; let i = index"
@@ -10,9 +10,9 @@
     </button>
   </div>
 
-  <!-- Contenuto dinamico per ogni scheda -->
+  <!-- Contenu dynamique pour chaque formulaire -->
   <div class="tab-content">
-    <!-- Form per la scheda "Acheter" -->
+    <!-- Formulaire "Acheter" -->
     <form *ngIf="activeTab === 0" (ngSubmit)="onSubmit('Acheter')">
       <div class="form-group">
         <h3>Acheter</h3>
@@ -30,7 +30,7 @@
       </button>
     </form>
 
-    <!-- Form per la scheda "Louer" -->
+    <!-- Formulaire "Louer" -->
     <form *ngIf="activeTab === 1" (ngSubmit)="onSubmit('Louer')">
       <div class="form-group">
         <h3>Louer</h3>
@@ -58,7 +58,7 @@
       </button>
     </form>
 
-    <!-- Form per la scheda "Vendre" -->
+    <!-- Formulaire "Vendre" -->
     <form *ngIf="activeTab === 2" (ngSubmit)="onSubmit('Vendre')">
       <div class="form-group">
         <h3>Vendre</h3>
@@ -76,7 +76,7 @@
       </button>
     </form>
 
-    <!-- Form per la scheda "Construire" -->
+    <!-- Formulaire "Construire" -->
     <form *ngIf="activeTab === 3" (ngSubmit)="onSubmit('Construire')">
       <div class="form-group">
         <h3>Construire</h3>

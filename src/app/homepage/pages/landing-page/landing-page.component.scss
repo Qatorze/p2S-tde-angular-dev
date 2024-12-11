@@ -314,7 +314,7 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      flex-wrap: wrap; /* Permet le changement de layout dinamique sur les écrans plus petits */
+      flex-wrap: wrap; /* Permet le changement de layout dynamique sur les écrans plus petits */
       @include media-breakpoint-down(md) {
         flex-direction: column;
       }
@@ -400,7 +400,7 @@
           }
         }
       }
-      /* Griglia degli articoli */
+      /* Grille des articles */
       .articles-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

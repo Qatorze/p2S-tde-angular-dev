@@ -14,16 +14,16 @@ export class GlobalFormErrorHandlerService {
       };
     }
   ): void {
-    // Mi consente di uscire subito della function se il modulo non esiste.
+    // Si l'objet n'est pas un formulaire je sors direct de la fonction
     if (!form) {
       return;
     }
-    // Questo serve per cancellare eventuali messaggi di errore precedenti.
+    // Ici je supprime eventuels sms d'erreur précédents
     for (const campo in formErrors) {
       formErrors[campo].message = '';
     }
 
-    // Qui per inviare il messaggio 'Le password non coincidono.'
+    // Ici pour renvoyer le message d'erreur 'Les passwords ne coincident pas'
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
     if (password && confirmPassword && password !== confirmPassword) {
@@ -33,7 +33,7 @@ export class GlobalFormErrorHandlerService {
         formErrors['confirmPassword'].message.trim();
     }
 
-    // Qui per qualsiasi altri messaggi di errore per gli altri campi input
+    // Ici pour renvoyer n'importe quel autre message liés aux formulaire
     for (const campo in form.controls) {
       const control = form.get(campo)!;
 

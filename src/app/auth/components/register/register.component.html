@@ -1,3 +1,5 @@
+<!-- Pour ce qui est du style des formulaire de Login et Register, le style à été
+ définit dans le file de style global "styles.scss" car partagé entre les deux composants -->
 <form class="auth-formulaire" [formGroup]="form" (ngSubmit)="submit()">
   <h3 class="form-title">Register</h3>
 
@@ -11,6 +13,7 @@
       placeholder="Inserisci il tuo nome"
       (change)="updateFormErrors()"
     />
+    <!-- Erreurs specifiques au champ name -->
     <div *ngIf="formErrors['name'].message">
       <p class="errorText">
         {{ formErrors["name"].message }}
@@ -28,6 +31,7 @@
       placeholder="Inserisci il tuo cognome"
       (change)="updateFormErrors()"
     />
+    <!-- Erreurs specifiques au champ surname -->
     <div *ngIf="formErrors['surname'].message">
       <p class="errorText">
         {{ formErrors["surname"].message }}
@@ -45,6 +49,7 @@
       placeholder="exemple@gmail.com"
       (change)="updateFormErrors()"
     />
+    <!-- Erreurs specifiques au champ email -->
     <div *ngIf="formErrors['email'].message">
       <p class="errorText">
         {{ formErrors["email"].message }}
@@ -59,9 +64,10 @@
       type="password"
       id="password"
       name="password"
-      placeholder="Digita password"
+      placeholder="your password"
       (change)="updateFormErrors()"
     />
+    <!-- Erreurs specifiques au champ password -->
     <div *ngIf="formErrors['password'].message">
       <p class="errorText">
         {{ formErrors["password"].message }}
@@ -78,9 +84,10 @@
       type="password"
       id="confirmPassword"
       name="confirmPassword"
-      placeholder="Conferma password"
+      placeholder="Confirm your password"
       (change)="updateFormErrors()"
     />
+    <!-- Erreurs specifiques au champ confirmPassword -->
     <div *ngIf="formErrors['confirmPassword'].message">
       <p class="errorText">
         {{ formErrors["confirmPassword"].message }}
@@ -88,7 +95,7 @@
     </div>
   </div>
 
-  <!-- Errore generale del form -->
+  <!-- Messages d'erreurs générales du formulaire -->
   <div *ngIf="formErrors['form'].message">
     <div class="separator"></div>
     <p class="errorText">{{ formErrors["form"].message }}</p>
@@ -96,10 +103,8 @@
 
   <div class="button-container">
     <button class="btn" type="submit" [disabled]="loading">
-      <!-- Testo "Sign in" visibile solo quando non è in caricamento -->
       <span class="button-text" *ngIf="!loading">Submit</span>
-
-      <!-- Spinner visibile solo quando è in caricamento -->
+      <!-- Spinner visible lorsqu'il y a le chargement-->
       <div class="loading-spinner" *ngIf="loading">
         <fa-icon [icon]="faSpinner" class="spinner"></fa-icon>
       </div>

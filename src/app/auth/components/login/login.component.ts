@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Icona "spinner" (solido)
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { emailValidator } from '../../../core/Validators/email.validator';
@@ -14,13 +14,13 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  // Icons
-  faSpinner = faSpinner; // Icona spinner
+  // Icônes
+  faSpinner = faSpinner;
 
   public form!: FormGroup;
-  public loading: boolean = false; // Pour le chargement lors de l'interaction avec le database
+  public loading: boolean = false; // Pour l'état de chargement lors de l'interaction avec la base de données
 
-  //Qui un oggetto per la mia gestione degli errori legati al mio formulario.
+  // Un objet pour la gestion des erreurs liées à mon formulaire
   public formErrors: {
     [campo: string]: {
       message: string;
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     if (!this.form) {
       return;
     }
-    // Questo serve per cancellare eventuali messaggi di errore già visibles.
+    // Cela sert à effacer d'éventuels messages d'erreur déjà visibles.
     for (const campo in this.formErrors) {
       this.formErrors[campo].message = '';
     }
@@ -62,13 +62,13 @@ export class LoginComponent implements OnInit {
 
   public submit(): void {
     if (this.form.valid) {
-      this.loading = true; // Chargement si le formulaire è valide
+      this.loading = true; // Chargement si le formulaire est valide
       const email = this.form.get('email')?.value;
       const password = this.form.get('password')?.value;
       this.authService.login$(email, password).subscribe({
         next: (user) => {
           const role = this.authService.getUserRole();
-          // this.loading = true; //  avant la navigation
+          // this.loading = true; // Avant la navigation
 
           if (role === 'user') {
             this.router.navigate(['/user/feed']).finally(() => {
@@ -81,18 +81,18 @@ export class LoginComponent implements OnInit {
           } else {
             this.loading = false;
             this.formErrors['form'].message =
-              "Erreur durant l'authentication. Contacter le support client.";
+              "Erreur durant l'authentification. Contactez le support client.";
           }
         },
-        // Messaggi di errori provenienti dall'authService dopo la sua interazione con il server
+        // Messages d'erreurs provenant de l'authService après son interaction avec le serveur
         error: (error) => {
-          this.loading = false; // Fine du chargement en cas d'erreur
+          this.loading = false; // Fin du chargement en cas d'erreur
           this.formErrors['form'].message = error.message;
         },
       });
     } else {
       this.formErrors['form'].message =
-        'Le formulaire est incomplet ou contient des erreurs, verifier les champs.';
+        'Le formulaire est incomplet ou contient des erreurs, veuillez vérifier les champs.';
     }
   }
 }

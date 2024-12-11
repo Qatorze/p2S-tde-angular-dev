@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-// Questa funzione permette di invalidare il form se password e confirmPassword non coincidono.
+// Cette fonction permet d'invalider le formulaire si password et confirmPassword ne coincident pas.
 export function passwordMatchValidator(): ValidatorFn {
   return (form: AbstractControl): ValidationErrors | null => {
     const password = form.get('password')?.value;

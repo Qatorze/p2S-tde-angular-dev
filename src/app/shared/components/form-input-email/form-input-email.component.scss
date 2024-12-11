@@ -35,8 +35,8 @@
         justify-content: center;
         background-color: var(--primary);
         color: white;
-        min-width: 30px; /* Imposta una larghezza minima */
-        height: 29px; /* Imposta un'altezza costante */
+        min-width: 30px; /* Set la largeur fixe afin que le button ne change pas de dimension durant le spinner de chargement */
+        height: 29px; /* idem pour la hauteur */
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -47,10 +47,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #007bff; /* Colore dell'icona */
-          animation: spin 1s linear infinite; /* Animazione di rotazione */
+          animation: spin 1s linear infinite;
 
-          /* Stile dell'icona dentro il bottone */
           .loading-spinner fa-icon {
             font-size: 16px;
           }
@@ -65,10 +63,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #007bff; /* Colore dell'icona */
-          animation: spin 1s linear infinite; /* Animazione di rotazione */
+          animation: spin 1s linear infinite;
 
-          /* Stile dell'icona dentro il bottone */
           .loading-spinner fa-icon {
             font-size: 16px;
           }
