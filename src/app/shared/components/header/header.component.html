@@ -5,13 +5,17 @@
       <li>
         <a [routerLink]="getRouterLink()">Home</a>
       </li>
-      <li>
+      <li *ngIf="!authService.isAuthenticated()">
         <a [routerLink]="['/homepage/nos-logements']">Nos Logements</a>
       </li>
-      <li>
+      <li *ngIf="!authService.isAuthenticated()">
         <a [routerLink]="['/homepage/nos-services']">Nos Services</a>
       </li>
+      <li *ngIf="authService.isAuthenticated()">
+        <a [routerLink]="['/user/profile']">Profile</a>
+      </li>
     </ul>
+
     <!-- Logo centré -->
     <a [routerLink]="getRouterLink()" class="navbar-logo">
       <img
@@ -24,11 +28,13 @@
     </a>
     <div class="right-links">
       <ul>
-        <a [routerLink]="['/homepage/about-us-P2S-tde']">
-          <li>About us</li>
-        </a>
+        <li *ngIf="!authService.isAuthenticated()">
+          <a [routerLink]="['/homepage/about-us-P2S-tde']">
+            <li>About us</li>
+          </a>
+        </li>
         <li>
-          <a (click)="toggleModal()">
+          <a (click)="toggleSearchModal()">
             <fa-icon [icon]="faSearch"></fa-icon>
           </a>
         </li>
@@ -45,8 +51,13 @@
         </a>
       </button>
 
-      <button *ngIf="authService.isAuthenticated()" class="button-grey-black">
-        <a (click)="logout()" [routerLink]="['/homepage']">
+      <button
+        *ngIf="authService.isAuthenticated()"
+        (click)="toggleConfirmLogoutModal()"
+        class="button-grey-black"
+      >
+        <!-- <a (click)="logout()" [routerLink]="['/homepage']"> -->
+        <a [routerLink]="['/homepage']">
           <span>Deconnexion</span>
           <fa-icon [icon]="faSignOutAlt" [size]="'1x'"></fa-icon>
         </a>
@@ -55,14 +66,35 @@
   </div>
 </nav>
 
-<!-- Modal -->
-<div
-  class="modal-container"
-  *ngIf="showModal"
-  appClickOutsideModal
-  (clickOutside)="closeModal()"
->
-  <div class="modal-content">
+<!-- Search Modal -->
+<div class="modal-container" *ngIf="showModal">
+  <div
+    class="modal-content"
+    appClickOutsideModal
+    (clickOutside)="closeSearchModal()"
+  >
     <app-search-bar></app-search-bar>
+  </div>
+</div>
+
+<!-- Logout Modal -->
+<div
+  *ngIf="showConfirmLogoutModal && authService.isAuthenticated()"
+  class="modal-logout-container"
+>
+  <div
+    class="modal-content"
+    appClickOutsideModal
+    (clickOutside)="closeConfirmLogoutModal()"
+  >
+    <p class="intro-text">Vous etes sur de bien vouloir vous déconnecter?</p>
+    <ul class="lista">
+      <li>
+        <a (click)="logout()" [routerLink]="['/homepage']">Oui</a>
+      </li>
+      <li>
+        <a (click)="closeConfirmLogoutModal()">Non</a>
+      </li>
+    </ul>
   </div>
 </div>

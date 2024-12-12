@@ -14,11 +14,38 @@
         </a>
       </li>
     </ul>
-    <button *ngIf="authService.isAuthenticated()" class="button-grey-black">
-      <a (click)="logout()" [routerLink]="['/homepage']">
+    <button
+      *ngIf="authService.isAuthenticated()"
+      (click)="toggleConfirmLogoutModal()"
+      class="button-grey-black"
+    >
+      <!-- <a (click)="logout()" [routerLink]="['/homepage']"> -->
+      <a [routerLink]="['/homepage']">
         <span>Deconnexion</span>
         <fa-icon [icon]="faSignOutAlt" [size]="'1x'"></fa-icon>
       </a>
     </button>
+  </div>
+</div>
+
+<!-- Logout Modal -->
+<div
+  *ngIf="showConfirmLogoutModal && authService.isAuthenticated()"
+  class="modal-logout-container"
+>
+  <div
+    class="modal-content"
+    appClickOutsideModal
+    (clickOutside)="closeConfirmLogoutModal()"
+  >
+    <p class="intro-text">Vous etes sur de bien vouloir vous déconnecter?</p>
+    <ul class="lista">
+      <li>
+        <a (click)="logout()" [routerLink]="['/homepage']">Oui</a>
+      </li>
+      <li>
+        <a (click)="closeConfirmLogoutModal()">Non</a>
+      </li>
+    </ul>
   </div>
 </div>

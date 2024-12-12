@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
   faHeart = faHeart;
   faSearch = faSearch;
   faSignOutAlt = faSignOutAlt;
+
   showModal = false;
+  showConfirmLogoutModal = false;
 
   public userRole!: string | null;
 
@@ -29,12 +31,27 @@ export class HeaderComponent implements OnInit {
     this.checkAuthentication();
     this.loadClienteData();
   }
-  toggleModal(): void {
+
+  toggleSearchModal(): void {
+    if (!this.showConfirmLogoutModal) {
+      this.showConfirmLogoutModal = false;
+    }
     this.showModal = !this.showModal;
   }
 
-  closeModal(): void {
+  closeSearchModal(): void {
     this.showModal = false;
+  }
+
+  toggleConfirmLogoutModal(): void {
+    if (!this.showModal) {
+      this.showModal = false;
+    }
+    this.showConfirmLogoutModal = !this.showConfirmLogoutModal;
+  }
+
+  closeConfirmLogoutModal(): void {
+    this.showConfirmLogoutModal = false;
   }
 
   // Ottieni il link per la navigazione in base allo stato di autenticazione e ai dati del cliente
