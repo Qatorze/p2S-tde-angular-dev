@@ -3,7 +3,7 @@
   <div class="navbar-container">
     <ul class="header-links">
       <li>
-        <a [routerLink]="['/homepage']">Home</a>
+        <a [routerLink]="getRouterLink()">Home</a>
       </li>
       <li>
         <a [routerLink]="['/homepage/nos-logements']">Nos Logements</a>
@@ -13,7 +13,7 @@
       </li>
     </ul>
     <!-- Logo centré -->
-    <a [routerLink]="['/homepage']" class="navbar-logo">
+    <a [routerLink]="getRouterLink()" class="navbar-logo">
       <img
         ngSrc="assets/logo2.jpg"
         alt="Logo p2S-tde"
@@ -32,16 +32,23 @@
             <fa-icon [icon]="faSearch"></fa-icon>
           </a>
         </li>
-        <li>
+        <li *ngIf="authService.isAuthenticated()">
           <a routerLinkActive="active">
             <fa-icon [icon]="faHeart"></fa-icon>
           </a>
         </li>
       </ul>
-      <button class="button-grey-black">
+      <button *ngIf="!authService.isAuthenticated()" class="button-grey-black">
         <a [routerLink]="['/auth/login']" routerLinkActive="active">
           <span>Connexion</span>
           <fa-icon [icon]="faSignInAlt" [size]="'1x'"></fa-icon>
+        </a>
+      </button>
+
+      <button *ngIf="authService.isAuthenticated()" class="button-grey-black">
+        <a (click)="logout()" [routerLink]="['/homepage']">
+          <span>Deconnexion</span>
+          <fa-icon [icon]="faSignOutAlt" [size]="'1x'"></fa-icon>
         </a>
       </button>
     </div>

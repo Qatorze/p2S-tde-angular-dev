@@ -14,5 +14,11 @@
         </a>
       </li>
     </ul>
+    <button *ngIf="authService.isAuthenticated()" class="button-grey-black">
+      <a (click)="logout()" [routerLink]="['/homepage']">
+        <span>Deconnexion</span>
+        <fa-icon [icon]="faSignOutAlt" [size]="'1x'"></fa-icon>
+      </a>
+    </button>
   </div>
 </div>
