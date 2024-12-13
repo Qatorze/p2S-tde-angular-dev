@@ -1,3 +1,5 @@
+@use "sass:map"; // Import the `map` module for map-related functions
+
 // Variables pour les breakpoints
 $breakpoints: (
   // Téléphones petits (petits smartphones)
@@ -12,14 +14,14 @@ $breakpoints: (
 
 // Mixin pour les breakpoints
 @mixin media-breakpoint-up($breakpoint) {
-  $breakpoint-size: map-get($breakpoints, $breakpoint);
+  $breakpoint-size: map.get($breakpoints, $breakpoint); // Updated syntax
   @media (min-width: #{$breakpoint-size}) {
     @content;
   }
 }
 
 @mixin media-breakpoint-down($breakpoint) {
-  $breakpoint-size: map-get($breakpoints, $breakpoint);
+  $breakpoint-size: map.get($breakpoints, $breakpoint); // Updated syntax
   @media (max-width: #{$breakpoint-size}) {
     @content;
   }

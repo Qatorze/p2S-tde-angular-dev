@@ -10,6 +10,7 @@ import { ClickOutsideModalDirective } from './directives/click-outside-modal.dir
 import { ToggleSearchSectionDirective } from './directives/toggle-search-section.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInputEmailComponent } from './components/form-input-email/form-input-email.component';
+import { LogoutConfirmModalComponent } from './components/logout-confirm-modal/logout-confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormInputEmailComponent } from './components/form-input-email/form-inpu
     ClickOutsideModalDirective,
     ToggleSearchSectionDirective,
     FormInputEmailComponent,
+    LogoutConfirmModalComponent,
   ],
   imports: [
     CommonModule,

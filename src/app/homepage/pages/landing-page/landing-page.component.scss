@@ -1,4 +1,4 @@
-@import "../../../../styles/breakpoints"; // Import des media queries centralisées
+@use "../../../../styles/breakpoints" as bp; // Import des bp.media queries centralisées
 
 .landind-container {
   display: flex;
@@ -78,7 +78,7 @@
       flex-wrap: wrap;
       flex-direction: row;
       // Responsive pour les dispositifs mobiles (ici à partir des tablets)
-      @include media-breakpoint-down(sm) {
+      @include bp.media-breakpoint-down(sm) {
         flex-direction: column; // Met les cards en display column
       }
       .main-card {
@@ -91,7 +91,7 @@
         flex-direction: column;
         gap: 10px;
         // Met les cards les une en dessous des autre à partir des tablets
-        @include media-breakpoint-down(sm) {
+        @include bp.media-breakpoint-down(sm) {
           flex: 100%;
           margin-bottom: 20px; // Espace entre les card quand elles sont en column
         }
@@ -116,7 +116,7 @@
         flex-direction: column;
         gap: 10px;
         // Sur téléphone
-        @include media-breakpoint-down(xs) {
+        @include bp.media-breakpoint-down(xs) {
           padding: 5px;
         }
         h4 {
@@ -138,7 +138,7 @@
       background-color: #ddd;
       border-radius: 10px;
       // A' partir des tablets
-      @include media-breakpoint-down(sm) {
+      @include bp.media-breakpoint-down(sm) {
         height: 100px;
       }
       .tag {
@@ -157,7 +157,7 @@
       align-self: flex-start;
       color: #007bff;
       // A' partir des téléphones
-      @include media-breakpoint-down(xs) {
+      @include bp.media-breakpoint-down(xs) {
         font-size: 14px;
       }
     }
@@ -229,7 +229,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
       gap: 10px;
-      @include media-breakpoint-down(sm) {
+      @include bp.media-breakpoint-down(sm) {
         grid-template-columns: 1fr; // Colonne sur un seul ligne
       }
       .card {
@@ -240,7 +240,7 @@
         display: flex;
         flex-direction: row;
         gap: 10px;
-        @include media-breakpoint-down(sm) {
+        @include bp.media-breakpoint-down(sm) {
           flex-direction: column; // Card en display column
         }
         .image-placeholder {
@@ -250,7 +250,7 @@
           height: 200px;
           background-color: #ddd;
           border-radius: 10px;
-          @include media-breakpoint-down(sm) {
+          @include bp.media-breakpoint-down(sm) {
             height: 150px; // Hauteur plus petite pour les petits écrans
           }
           .tag {
@@ -269,7 +269,7 @@
         }
         .card-description {
           width: 700px;
-          @include media-breakpoint-down(sm) {
+          @include bp.media-breakpoint-down(sm) {
             width: 100%; // La description occupe toute la largeur
           }
           h4 {
@@ -315,7 +315,7 @@
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap; /* Permet le changement de layout dynamique sur les écrans plus petits */
-      @include media-breakpoint-down(md) {
+      @include bp.media-breakpoint-down(md) {
         flex-direction: column;
       }
       .text-content {
@@ -324,7 +324,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        @include media-breakpoint-down(md) {
+        @include bp.media-breakpoint-down(md) {
           margin-top: 20px;
         }
         div {
@@ -333,7 +333,7 @@
           flex-direction: column;
           align-items: center;
           padding-left: 15px;
-          @include media-breakpoint-down(md) {
+          @include bp.media-breakpoint-down(md) {
             padding-right: 15px;
           }
           p {
@@ -349,7 +349,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
         gap: 15px;
-        @include media-breakpoint-down(md) {
+        @include bp.media-breakpoint-down(md) {
           justify-content: center;
           padding: 10px;
         }
