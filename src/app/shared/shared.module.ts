@@ -11,6 +11,7 @@ import { ToggleSearchSectionDirective } from './directives/toggle-search-section
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInputEmailComponent } from './components/form-input-email/form-input-email.component';
 import { LogoutConfirmModalComponent } from './components/logout-confirm-modal/logout-confirm-modal.component';
+import { ChangePasswordFormComponent } from './components/change-password-form/change-password-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LogoutConfirmModalComponent } from './components/logout-confirm-modal/l
     ToggleSearchSectionDirective,
     FormInputEmailComponent,
     LogoutConfirmModalComponent,
+    ChangePasswordFormComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { LogoutConfirmModalComponent } from './components/logout-confirm-modal/l
     InternalNotFoundPageComponent,
     SearchBarComponent,
     FormInputEmailComponent,
+    ChangePasswordFormComponent,
   ],
 })
 export class SharedModule {}

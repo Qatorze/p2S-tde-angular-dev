@@ -34,7 +34,7 @@
   </div>
 
   <div class="button-container">
-    <button class="btn" type="submit" [disabled]="loading">
+    <button class="btn" type="submit" [disabled]="loading || form.invalid">
       <span class="button-text" *ngIf="!loading">Sign in</span>
       <!-- Spinner visible lorsqu'il y a le chargement-->
       <div class="loading-spinner" *ngIf="loading">
@@ -43,3 +43,4 @@
     </button>
   </div>
 </form>
+<p [routerLink]="['/auth/password-reset-request']">reset password</p>

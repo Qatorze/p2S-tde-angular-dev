@@ -32,6 +32,7 @@ a {
   --text-regular: #333333; /* Colore del testo (grigio scuro) */
   --link-color: #d02b29; /* Colore dei link (rosso acceso) */
   --hover-color: #f44336; /* Colore hover per pulsanti e link */
+  --success-color: rgb(37, 144, 37); /* Colore hover per pulsanti e link */
   /* Neutri */
   --lightGray: #ddd; /* Grigio chiaro */
   --background-light: #efefef; /* Bianco sporco per lo sfondo */
@@ -135,6 +136,16 @@ body {
     text-align: center;
     letter-spacing: 0.5px;
 
+    // max-width: 300px;
+    margin-top: 3px;
+  }
+
+  .successText {
+    color: var(--success-color);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5px;
     // max-width: 300px;
     margin-top: 3px;
   }

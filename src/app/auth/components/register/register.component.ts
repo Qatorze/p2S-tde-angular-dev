@@ -116,32 +116,30 @@ export class RegisterComponent implements OnInit {
   }
 
   public submit(): void {
-    if (this.form.valid) {
-      // Active l'état de chargement
-      this.loading = true;
-
-      const surname = this.form.get('surname')?.value;
-      const name = this.form.get('name')?.value;
-      const email = this.form.get('email')?.value;
-      const password = this.form.get('password')?.value;
-
-      this.authService.register$(surname, name, email, password).subscribe({
-        next: (user) => {
-          // Désactive l'état de chargement en cas de succès
-          this.loading = false;
-          this.form.reset();
-          this.router.navigate(['/auth/login']);
-        },
-        error: (error) => {
-          // Désactive l'état de chargement en cas d'erreur
-          this.loading = false;
-          this.formErrors['form'].message = error.message;
-        },
-      });
-    } else {
-      this.updateFormErrors();
-      this.formErrors['form'].message =
-        'Le formulaire est incomplet ou contient des erreurs, veuillez vérifier les champs.';
-    }
+    //   if (this.form.valid) {
+    //     // Active l'état de chargement
+    //     this.loading = true;
+    //     const surname = this.form.get('surname')?.value;
+    //     const name = this.form.get('name')?.value;
+    //     const email = this.form.get('email')?.value;
+    //     const password = this.form.get('password')?.value;
+    //     this.authService.register$(surname, name, email, password).subscribe({
+    //       next: (user) => {
+    //         // Désactive l'état de chargement en cas de succès
+    //         this.loading = false;
+    //         this.form.reset();
+    //         this.router.navigate(['/auth/login']);
+    //       },
+    //       error: (error) => {
+    //         // Désactive l'état de chargement en cas d'erreur
+    //         this.loading = false;
+    //         this.formErrors['form'].message = error.message;
+    //       },
+    //     });
+    //   } else {
+    //     this.updateFormErrors();
+    //     this.formErrors['form'].message =
+    //       'Le formulaire est incomplet ou contient des erreurs, veuillez vérifier les champs.';
+    //   }
   }
 }

@@ -9,9 +9,10 @@ import { FeedComponent } from './pages/feed/feed.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserComponent } from './user.component';
+import { PasswordUpdateComponent } from './pages/password-update/password-update.component';
 
 @NgModule({
-  declarations: [UserComponent, FeedComponent, ProfileComponent],
+  declarations: [UserComponent, FeedComponent, ProfileComponent, PasswordUpdateComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

@@ -8,9 +8,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
+import { RequestResetPasswordComponent } from './components/request-reset-password/request-reset-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, RegisterComponent],
+  declarations: [
+    AuthComponent,
+    LoginComponent,
+    RegisterComponent,
+    ResetPasswordComponent,
+    RequestResetPasswordComponent,
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,

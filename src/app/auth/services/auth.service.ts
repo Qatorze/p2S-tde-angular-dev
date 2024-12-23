@@ -1,131 +1,51 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { jwtDecode } from 'jwt-decode';
 // Interfaces
 import { UserInterface } from '../../shared/interfaces/user.interface';
 import { RegisterRequestInterface } from '../interfaces/register-request.interface';
 import { LoginRequestInterface } from '../interfaces/login-request.interface';
-import { AuthTokenInterface } from '../../shared/interfaces/auth-token.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // Utilise "apiUrl" qui se trouve dans le folder environments
   private apiBaseUrl: string = environment.apiUrl + '/auth';
-
-  // Ici "null" est la valeur par defaut que je passe à mon "BehaviorSubject" car c'est obbligé de lui passer une valeur par defaut.
-  private userToken$: BehaviorSubject<string | null> = new BehaviorSubject<
-    string | null
-  >(null);
 
   public user$: BehaviorSubject<UserInterface | null> =
     new BehaviorSubject<UserInterface | null>(null);
 
   constructor(private http: HttpClient) {
-    const token = sessionStorage.getItem('WWA_JWToken');
-    if (token) {
-      this.userToken$.next(token);
-      this.setToken(token); // Décodifie set le token
-    }
-
-    // Enregistre dans le BehaviourSubject les données du user en les décodificants depuis le token
-    const user = this.getUserFromToken();
-    if (user) {
-      this.user$.next(user);
-    }
+    this.restoreSession(); // Ripristina la sessione all'avvio
   }
 
-  /* Fonction pour sauvegarder le token dans la session storage. On utilise l'interface AuthTokenInterface
-  pour gérer le tipo du token */
-  public setToken(token: string): void {
-    try {
-      const decodedAuthTokenInterface = jwtDecode<AuthTokenInterface>(token);
-      // Controlle se le role du user est "admin" ou "user"
-      if (
-        decodedAuthTokenInterface.role === 'admin' ||
-        decodedAuthTokenInterface.role === 'user'
-      ) {
-        this.userToken$.next(token); // MAJ le BehaviorSubject du token
-        sessionStorage.setItem('WWA_JWToken', token); // Enregistre le token dans la sessionStorage
-
-        // MAJ les données du user à partir du Token
-        const user = this.getUserFromToken();
-        if (user) {
-          this.user$.next(user); // MAJ le BehaviorSubject du user
-        }
-      } else {
-        console.warn(`Ruole non autorisé: ${decodedAuthTokenInterface.role}`);
-        this.logout(); // Rimuovi ogni traccia se il ruolo non è valido
-      }
-    } catch (error) {
-      console.error('Erreur durant la décodification du Token:', error);
-      this.logout(); // En cas de token invalide, effectue le logout
-    }
-  }
-
-  // Methode pour obtenir les données du user en decodificant le token JWT
-  private getUserFromToken(): UserInterface | null {
-    const token = this.getToken();
-    if (!token) return null;
-
-    try {
-      const decodedAuthTokenInterface = jwtDecode<{
-        id: number;
-        email: string;
-        role: string;
-        surname: string;
-        name: string;
-        imagePath: string;
-      }>(token);
-
-      return {
-        id: decodedAuthTokenInterface.id,
-        email: decodedAuthTokenInterface.email,
-        role: decodedAuthTokenInterface.role,
-        surname: decodedAuthTokenInterface.surname || '',
-        name: decodedAuthTokenInterface.name || '',
-        password: '', // Vide, car le token ne contient pas la password du user
-        imagePath: decodedAuthTokenInterface.imagePath || '',
-      };
-    } catch (error) {
-      console.error('Erreur durant la décodification du Token:', error);
-      return null;
-    }
-  }
-
-  // Methode pour le Login
-  public login$(
-    email: string,
-    password: string
-  ): Observable<{ token: string }> {
-    // Objet pour la requete de "login" qu'on envoie server. Constitue le body de le requete HTTP de type "post"
+  // Metodo per il login
+  public login$(email: string, password: string): Observable<UserInterface> {
     const loginRequest: LoginRequestInterface = { email, password };
-
-    /** "{ withCredentials: true }" pour permettre l'envoie des cookies tra il frontend e le backend */
     return this.http
-      .post<{ token: string }>(`${this.apiBaseUrl}/login`, loginRequest, {
-        withCredentials: true,
+      .post<UserInterface>(`${this.apiBaseUrl}/login`, loginRequest, {
+        withCredentials: true, // Necessario per inviare i cookie HttpOnly
       })
       .pipe(
-        tap((response) => {
-          // Set le token e decodifit les données reçuent du back-end à travers le token
-          this.setToken(response.token);
+        tap((user) => {
+          // Aggiorna il BehaviorSubject con i dati dell'utente
+          this.user$.next(user);
+
+          // Salva i dati dell'utente in sessionStorage
+          sessionStorage.setItem('user', JSON.stringify(user));
         }),
         catchError(this.handleError('login'))
       );
   }
 
-  // Methode pour l'enregistrement d'un nouveau user
+  // Metodo per la registrazione di un nuovo utente
   public register$(
     surname: string,
     name: string,
     email: string,
     password: string
   ): Observable<UserInterface> {
-    // Objet pour la requete de "registrazione" qu'on envoie server. Constitue le body de le requete HTTP de type "post"
     const registerRequest: RegisterRequestInterface = {
       surname,
       name,
@@ -134,65 +54,108 @@ export class AuthService {
     };
 
     return this.http
-      .post<UserInterface>(`${this.apiBaseUrl}/register`, registerRequest)
-      .pipe(catchError(this.handleError('register')));
+      .post<UserInterface>(`${this.apiBaseUrl}/register`, registerRequest, {
+        withCredentials: true, // Necessario per inviare i cookie HttpOnly
+      })
+      .pipe(
+        tap((user) => {
+          // Aggiorna il BehaviorSubject con i dati dell'utente
+          this.user$.next(user);
+
+          // Salva i dati dell'utente in sessionStorage
+          sessionStorage.setItem('user', JSON.stringify(user));
+        }),
+        catchError(this.handleError('register'))
+      );
   }
 
-  // Methode pour la gestion des erreurs des formulaires de login et registrer
+  // Metodo per effettuare il logout
+  public logout(): void {
+    this.user$.next(null); // Rimuove l'utente dalla sessione
+    sessionStorage.removeItem('user'); // Rimuovi i dati dell'utente da sessionStorage
+  }
+
+  // Metodo per verificare se l'utente è autenticato
+  public isAuthenticated(): boolean {
+    return !!this.user$.value; // Verifica se i dati dell'utente sono presenti nel BehaviorSubject
+  }
+
+  // Metodo per ripristinare la sessione
+  private restoreSession(): void {
+    const user = sessionStorage.getItem('user');
+    if (user) {
+      this.user$.next(JSON.parse(user)); // Ripristina i dati dell'utente dal sessionStorage
+    }
+  }
+
+  // Metodo per gestire gli errori durante le operazioni di login o registrazione
   private handleError(operation: string) {
     return (error: HttpErrorResponse) => {
-      let errorMessage = `Erreur durant la fase de ${operation}.`;
+      console.log(error.status);
+      let errorMessage = `Errore durante la fase di ${operation}.`;
+
       if (error.status === 0) {
-        errorMessage = 'Problème de connection au server.';
+        errorMessage = 'Problema di connessione al server.';
       } else if (error.status === 401) {
         errorMessage =
           operation === 'login'
-            ? 'Email et/ou Password invalides'
-            : "L'email inserée est dejà associée à un compte";
+            ? 'Email e/o password non validi.'
+            : "L'email inserita è già associata a un account.";
+      } else if (error.status >= 400 && error.status < 500) {
+        errorMessage = `Errore client: ${error.message}`;
+      } else if (error.status >= 500) {
+        errorMessage = `Errore server: ${error.message}`;
       }
+
+      // Verifica se la risposta contiene un corpo che non può essere parsato come JSON
+      if (error.error instanceof Blob) {
+        errorMessage =
+          'Errore nella risposta dal server. La risposta non è un JSON valido.';
+      }
+
       return throwError(() => new Error(errorMessage));
     };
   }
 
-  // Nettoye les BehaviorSubjects "user$" et "userToken$" et la session storage
-  public logout(): void {
-    this.user$.next(null);
-    this.userToken$.next(null);
-    sessionStorage.removeItem('WWA_JWToken');
+  // Metodo per il reset della password
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post<any>(
+      'http://localhost:8082/api/password-reset/reset',
+      {
+        token,
+        newPassword,
+      }
+    );
   }
 
-  // Verifie si le user est connecté
-  public isAuthenticated(): boolean {
-    return !!this.userToken$.value;
+  public requestPasswordReset$(email: string): Observable<any> {
+    const payload = { email };
+    return this.http
+      .post<any>(
+        'http://localhost:8082/api/password-reset/request',
+        payload,
+        { responseType: 'json' } // Mantieni la risposta come JSON
+      )
+      .pipe(catchError(this.handleError('requestPasswordReset')));
   }
 
-  /** Getters et Setters pour récupérer les données du user enregistrées dans la sessionStorage */
-  // Obtenir le token token corrente
-  public getToken(): string | null {
-    return this.userToken$.value;
-  }
-
-  // Obtenir l'Id du user connecté
+  /** Getters per accedere ai dati dell'utente */
   public getUserId(): number | null {
     return this.user$.value ? Number(this.user$.value.id) : null;
   }
 
-  // Obtenir le nom du user connecté
   public getUserSurname(): string | null | undefined {
     return this.user$.value ? this.user$.value.surname : null;
   }
 
-  // Obtenir le prenom du user connecté
   public getUserName(): string | null | undefined {
     return this.user$.value ? this.user$.value.name : null;
   }
 
-  // Obtenir le role du user connecté
   public getUserRole(): string | null | undefined {
     return this.user$.value ? this.user$.value.role : null;
   }
 
-  // Obtenir l'email du user connecté
   public getUserEmail(): string | null | undefined {
     return this.user$.value ? this.user$.value.email : null;
   }
