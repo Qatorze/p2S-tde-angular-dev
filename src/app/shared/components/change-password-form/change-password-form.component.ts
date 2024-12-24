@@ -28,8 +28,6 @@ export class ChangePasswordFormComponent implements OnInit {
   public formErrors: { [campo: string]: string } = {};
   public successMessageVisible: boolean = false; // Variabile per mostrare il messaggio di successo
 
-  private csrfToken: string | null = null;
-
   constructor(
     private changePasswordService: ChangePasswordService,
     public authService: AuthService,
@@ -55,8 +53,6 @@ export class ChangePasswordFormComponent implements OnInit {
       { validators: this.passwordMatchValidator } // Validatore personalizzato
     );
 
-    this.csrfToken = this.getCsrfTokenFromCookie(); // Legge il token CSRF
-
     this.subscription.add(
       this.form.statusChanges.subscribe(() => {
         this.updateFormErrors();
@@ -74,16 +70,6 @@ export class ChangePasswordFormComponent implements OnInit {
     const confirmPassword = control.get('confirmNewPassword')?.value;
     return newPassword === confirmPassword ? null : { passwordMismatch: true };
   };
-
-  /**
-   * Legge il token CSRF dai cookie.
-   */
-  private getCsrfTokenFromCookie(): string | null {
-    const csrfCookie = document.cookie
-      .split('; ')
-      .find((row) => row.startsWith('p2s_tde_csrf_token='));
-    return csrfCookie ? csrfCookie.split('=')[1] : null;
-  }
 
   /**
    * Aggiorna gli errori del modulo.
@@ -118,7 +104,7 @@ export class ChangePasswordFormComponent implements OnInit {
    * Invia i dati del modulo per il cambio password.
    */
   public submit(): void {
-    if (this.form.valid && this.csrfToken) {
+    if (this.form.valid) {
       this.loading = true;
 
       const email = this.form.get('emailAccount')?.value;
@@ -126,7 +112,7 @@ export class ChangePasswordFormComponent implements OnInit {
       const newPassword = this.form.get('newPassword')?.value;
 
       this.changePasswordService
-        .changePassword$(email, oldPassword, newPassword, this.csrfToken)
+        .changePassword$(email, oldPassword, newPassword)
         .subscribe({
           next: () => {
             this.loading = false;
@@ -141,9 +127,7 @@ export class ChangePasswordFormComponent implements OnInit {
           },
         });
     } else {
-      this.formErrors['form'] = this.csrfToken
-        ? 'Il modulo è incompleto o contiene errori.'
-        : 'Token CSRF mancante. Aggiorna la pagina.';
+      this.formErrors['form'] = 'Il modulo è incompleto o contiene errori.';
     }
   }
 
